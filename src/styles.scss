@@ -11,3 +11,56 @@ html, body {
 }
 
 $light-black: #9b9b9b;
+$main-orange: #fb4226;
+
+
+// Custom CSS For components
+// --  Start - tix-carousel
+.carousel-container {
+  .slick-dots {
+    bottom: 100px!important;
+
+    li {
+      .button:before {
+        opacity: 1;
+        color: white!important;
+      }
+    }
+  }
+  .slick-dots li {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    &.slick-active {
+      button:before {
+        color: $main-orange !important;
+        opacity: 1;
+      }
+    }
+    button:before {
+      color: white !important;
+      opacity: 1;
+      font-size: 12px;
+    }
+  }
+  .slick-arrow {
+    z-index: 1!important;
+    color: black;
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px!important;
+    &:before {
+      content: '';
+    }
+  }
+  .slick-prev {
+    left: 25px;
+    background: url("https://tix.vn/app/assets/img/icons/back-session.png");
+  }
+  .slick-next {
+    right: 25px;
+    background: url("https://tix.vn/app/assets/img/icons/next-session.png");
+  }
+}
+// -- End - tix -carousel
