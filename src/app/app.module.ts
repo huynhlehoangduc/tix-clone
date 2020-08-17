@@ -8,12 +8,14 @@ import { TixCarouselComponent } from './tix-carousel/tix-carousel.component';
 
 // Import your library
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    TixCarouselComponent
+    TixCarouselComponent,
+    MovieInfoComponent
   ],
   imports: [
     BrowserModule,
