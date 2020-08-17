@@ -4,6 +4,11 @@
                       [config]="slideConfig">
     <div ngxSlickItem *ngFor="let slide of slides" class="slide">
       <img src="{{ slide.imgPath }}" alt="" width="100%">
+      <div class="carousel__play">
+        <button class="btn-play" data-url="{{ slide.imgPath }}">
+          <img src="https://tix.vn/app/assets/img/icons/play-video.png">
+        </button>
+      </div>
     </div>
   </ngx-slick-carousel>
 </div>
