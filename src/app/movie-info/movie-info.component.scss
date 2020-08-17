@@ -1,0 +1,40 @@
+.movie-info {
+  position: relative;
+
+  .buy-now-container {
+    width: 940px;
+    position: absolute;
+    background: white;
+    box-shadow: 0 0 4px #a2a2a2;
+    border-radius: 5px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 0;
+
+    &__film {
+      width: 32%;
+    }
+    &__film-info {
+      width: 23%;
+      border-left: 1px solid rgba(238,238,238,.88);
+    }
+    .dropdown {
+      .btn {
+        width: 100%;
+        text-align: left;
+        position: relative;
+        &::after {
+          position: absolute;
+          right: 5px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &:focus, &:active {
+          outline: none!important;
+          border: none!important;
+          box-shadow: 0 0 0 0.2rem transparent;
+        }
+      }
+    }
+  }
+}
