@@ -1,8 +1,15 @@
 .movie-info {
   position: relative;
+  max-width: 940px;
+  margin: 0 auto;
+
+  .img-card {
+    position: relative;
+  }
 
   .buy-now-container {
-    width: 940px;
+    max-width: 940px;
+    width: 100%;
     position: absolute;
     background: white;
     box-shadow: 0 0 4px #a2a2a2;
@@ -14,25 +21,92 @@
     &__film {
       width: 32%;
     }
+
     &__film-info {
       width: 23%;
-      border-left: 1px solid rgba(238,238,238,.88);
+      border-left: 1px solid rgba(238, 238, 238, .88);
     }
+
     .dropdown {
       .btn {
         width: 100%;
         text-align: left;
         position: relative;
+
         &::after {
           position: absolute;
           right: 5px;
           top: 50%;
           transform: translateY(-50%);
         }
+
         &:focus, &:active {
-          outline: none!important;
-          border: none!important;
+          outline: none !important;
+          border: none !important;
           box-shadow: 0 0 0 0.2rem transparent;
+        }
+      }
+    }
+  }
+
+  &__first-nav-container {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+
+    .movie-info__first-nav {
+      font-size: 1.428rem !important;
+      padding: 1.5rem;
+      line-height: 2rem;
+      color: black;
+
+      &:focus {
+        text-decoration: none;
+      }
+
+      &.active {
+        font-size: 1.714rem !important;
+        color: #fa5238;
+      }
+    }
+  }
+
+  .movie-card {
+    &__img-play {
+      width: 50px !important;
+      height: 50px !important;
+    }
+
+    &__info {
+      position: relative;
+    }
+
+    &__buy-now {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 18px !important;
+      text-align: center;
+      background: #fb4226;
+      background: -webkit-linear-gradient(to left, #fb4226, #ce3017 100%);
+      background: -o-linear-gradient(to left, #fb4226, #ce3017 100%);
+      background: -moz-linear-gradient(to left, #fb4226, #ce3017 100%);
+      background: linear-gradient(to left, #fb4226, #ce3017 100%);
+      opacity: 0;
+      transition: .2s all;
+    }
+
+    &:hover {
+      .movie-card__info {
+        .movie-card__buy-now {
+          opacity: 1;
+        }
+
+        .movie-card__info-detail {
+          opacity: 0 !important;
         }
       }
     }
