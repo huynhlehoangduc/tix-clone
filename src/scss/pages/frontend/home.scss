@@ -1,0 +1,65 @@
+// --  Start - tix-carousel
+.carousel-container {
+  .slick-dots {
+    bottom: 100px !important;
+
+    li {
+      .button:before {
+        opacity: 1;
+        color: white !important;
+      }
+    }
+  }
+
+  .slick-dots li {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+
+    &.slick-active {
+      button:before {
+        color: $main-orange !important;
+        opacity: 1;
+      }
+    }
+
+    button:before {
+      color: white !important;
+      opacity: 1;
+      font-size: 12px;
+    }
+  }
+
+  .slick-prev {
+    left: 25px;
+  }
+
+  .slick-next {
+    right: 25px;
+  }
+}
+// -- End - tix -carousel
+
+/* Movie Info Component */
+.movie-info {
+  .slick-arrow {
+    opacity: 0.5;
+  }
+
+  .slick-prev {
+    left: -70px;
+
+    &:hover {
+      background: url("https://tix.vn/app/assets/img/icons/back-session.png");
+    }
+  }
+
+  .slick-next {
+    right: -70px;
+
+    &:hover {
+      background: url("https://tix.vn/app/assets/img/icons/next-session.png");
+    }
+  }
+}
