@@ -77,7 +77,7 @@
         <div class="row">
           <div *ngFor="let movie of slide" class="movie-card col-3 my-3">
             <div class="img-card mb-2">
-              <img class="rounded" alt="" src="{{ movie.imgPath }}" width="100%">
+              <img alt="" class="rounded" src="{{ movie.imgPath }}" width="100%">
               <div class="btn-play-container">
                 <button class="btn-play" data-url="{{ movie.imgPath }}">
                   <img class="movie-card__img-play" src="https://tix.vn/app/assets/img/icons/play-video.png">
@@ -85,7 +85,8 @@
               </div>
             </div>
             <div class="movie-card__info">
-              <h5 class="movie-card__info-detail"><span class="badge badge-success p-2 mr-2">C13</span>{{ movie.name }}</h5>
+              <h5 class="movie-card__info-detail"><span class="badge badge-success p-2 mr-2">C13</span>{{ movie.name }}
+              </h5>
               <span class="movie-card__info-detail">{{ movie.duration }}</span>
               <button class="py-2 btn w-100 movie-card__buy-now">MUA NGAY</button>
             </div>
@@ -93,5 +94,52 @@
         </div>
       </div>
     </ngx-slick-carousel>
+  </div>
+
+  <div class="movie-info-theater d-flex rounded">
+    <div class="theater-group">
+      <a class="theater-group-icon active" href="#">
+        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/ee621ee05dcd4565caead4f29421b41e.png">
+      </a>
+      <a class="theater-group-icon" href="#">
+        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png">
+      </a>
+      <a class="theater-group-icon" href="#">
+        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/16b811ab4773065c15eb0e9be67527b3.png">
+      </a>
+    </div>
+    <div class="theater-location">
+      <div class="theater-location__info active d-flex">
+        <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+        <div class="wrap-info">
+          <p>
+            <span class="text-orange">CGV</span> - Vĩnh Trung Plaza
+          </p>
+          <p>
+            <span class="fs-12 text-smoke">255-257, đường Hùng Vương</span>
+          </p>
+          <p>
+            <a class="text-orange fs-12" href="#">[Chi tiết]</a>
+          </p>
+        </div>
+      </div>
+      <div class="theater-location__info d-flex">
+        <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+        <div class="wrap-info">
+          <p>
+            <span class="text-orange">CGV</span> - Vĩnh Trung Plaza
+          </p>
+          <p>
+            <span class="fs-12 text-smoke">255-257, đường Hùng Vương</span>
+          </p>
+          <p>
+            <a class="text-orange fs-12" href="#">[Chi tiết]</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="theater-time-place py-4">
+      <h5 class="text-center">Không có suất chiếu</h5>
+    </div>
   </div>
 </div>
