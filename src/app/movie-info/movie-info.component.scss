@@ -159,42 +159,42 @@
     .theater-location {
       width: 280px;
       border-right: 1px solid #ddd;
+    }
 
-      .theater-location__info {
-        padding: 20px;
-        opacity: 0.5;
-        &.active {
-          opacity: 1;
-        }
+    .movie-wraper {
+      padding: 20px;
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+      }
 
-        position: relative;
+      position: relative;
 
-        &::after {
-          content: '';
-          width: calc(100% - 40px);
-          height: 1px;
-          background: rgba(238,238,238,.88);
-          display: block;
-          bottom: 0;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-        }
+      &::after {
+        content: '';
+        width: calc(100% - 40px);
+        height: 1px;
+        background: rgba(238,238,238,.88);
+        display: block;
+        bottom: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
-        img {
-          width: 50px;
-          height: 50px;
-        }
+      img {
+        width: 50px;
+        height: 50px;
+      }
 
-        .wrap-info {
-          font-size: 14px;
-          font-weight: 500;
-          margin-left: 10px;
+      .wrap-info {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
 
-          p {
-            margin: 0;
-            line-height: 1.4;
-          }
+        p {
+          margin: 0;
+          line-height: 1.4;
         }
       }
     }
@@ -204,6 +204,33 @@
 
       h5 {
         font-size: 15px;
+      }
+
+      .movie-container {
+        padding-bottom: 17px;
+        padding-top: 20px;
+        padding-right: 15px;
+        padding-left: 20px;
+        width: 100%;
+        position: relative;
+        margin-bottom: 0;
+        border: none;
+      }
+      .main-time {
+        color: #108f3e;
+        font-size: 18px;
+        font-weight: 500;
+        &:hover {
+          color: $main-orange;
+        }
+      }
+      .s-version {
+        width: 100%;
+        font-weight: 500;
+        font-size: 16px;
+        color: #000;
+        margin-bottom: 5px;
+        margin-top: 15px;
       }
     }
   }
