@@ -50,27 +50,6 @@
     }
   }
 
-  &__first-nav-container {
-    padding-top: 3rem;
-    padding-bottom: 1rem;
-
-    .movie-info__first-nav {
-      font-size: 1.428rem !important;
-      padding: 1.5rem;
-      line-height: 2rem;
-      color: black;
-
-      &:focus {
-        text-decoration: none;
-      }
-
-      &.active {
-        font-size: 1.714rem !important;
-        color: #fa5238;
-      }
-    }
-  }
-
   .movie-card {
     &__img-play {
       width: 50px !important;
