@@ -1,0 +1,47 @@
+.btn-play-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    .btn-play {
+      opacity: 1;
+    }
+  }
+
+  .btn-play {
+    background: transparent;
+    outline: none;
+    border: none;
+    transition: .35s all;
+    opacity: 0;
+  }
+}
+
+.btn-light-custom {
+  background-color: rgba(246,246,246,.5);
+  border-radius: 7px;
+  color: #9b9b9b;
+  border: 1px solid #e4e4e4;
+  &:hover {
+    color: #9b9b9b;
+  }
+}
+.text-orange {
+  color: $main-orange;
+}
+.badge-orange {
+  background: $main-orange;
+  color: white;
+}
+.text-smoke {
+  color: $smoke;
+}
+.fs-12 {
+  font-size: 12px!important;
+}

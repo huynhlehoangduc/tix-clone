@@ -1,66 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-}
+/* Base */
+@import "scss/base/customize";
 
-html, body {
-  font-size: 14px;
-  font-family: 'Source Sans Pro', sans-serif;
-}
+/* Helper */
+@import "scss/helper/variable";
+@import "scss/helper/general";
 
-$light-black: #9b9b9b;
-$main-orange: #fb4226;
+/* Pages */
+@import "scss/pages/frontend/home";
 
-
-// Custom CSS For components
-// --  Start - tix-carousel
-.carousel-container {
-  .slick-dots {
-    bottom: 100px!important;
-
-    li {
-      .button:before {
-        opacity: 1;
-        color: white!important;
-      }
-    }
-  }
-  .slick-dots li {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    &.slick-active {
-      button:before {
-        color: $main-orange !important;
-        opacity: 1;
-      }
-    }
-    button:before {
-      color: white !important;
-      opacity: 1;
-      font-size: 12px;
-    }
-  }
-  .slick-arrow {
-    z-index: 1!important;
-    color: black;
-    width: 50px;
-    height: 50px;
-    background-size: 50px 50px!important;
-    &:before {
-      content: '';
-    }
-  }
-  .slick-prev {
-    left: 25px;
-    background: url("https://tix.vn/app/assets/img/icons/back-session.png");
-  }
-  .slick-next {
-    right: 25px;
-    background: url("https://tix.vn/app/assets/img/icons/next-session.png");
-  }
-}
-// -- End - tix -carousel
+/* Layout */
+/* Component */
