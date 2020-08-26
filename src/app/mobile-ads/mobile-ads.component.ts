@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MobileAdsComponent implements OnInit {
 
+  slideConfig = { dots : true, prevArrow: false, nextArrow: false };
+
   constructor() { }
 
   ngOnInit(): void {

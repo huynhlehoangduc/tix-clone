@@ -1,1 +1,34 @@
-<p>mobile-ads works!</p>
+<div class="mobile-ads">
+  <div class="custom-container d-flex">
+    <div class="mobile-ads__left w-50 d-flex align-items-center">
+      <div>
+        <h2 class="mb-3">Ứng dụng tiện lợi dành cho </h2>
+        <h2>người yêu điện ảnh</h2>
+        <p>
+          Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi quà hấp dẫn.
+        </p>
+        <button class="btn btn-orange mt-3">App miễn phí - Tải về ngay!</button>
+        <p class="mt-2">TIX có hai phiên bản <a href="#">iOS</a> & <a href="#">Android</a></p>
+      </div>
+    </div>
+    <div class="mobile-ads__right w-50 d-flex justify-content-center">
+      <div class="iphone">
+        <img alt="Loading..." class="img-responsive phone-img" src="https://tix.vn/app/assets/img/icons/mobile.png">
+        <div class="phone-screen-container">
+          <ngx-slick-carousel #slickModal="slick-carousel"
+                              [config]="slideConfig"
+                              class="carousel">
+            <div class="phone-screen-wrapper slide" ngxSlickItem>
+              <img alt="https://tix.vn/app/assets/img/icons/slide/slide2.jpg"
+                   src="https://tix.vn/app/assets/img/icons/slide/slide2.jpg">
+            </div>
+            <div class="phone-screen-wrapper slide" ngxSlickItem>
+              <img alt="https://tix.vn/app/assets/img/icons/slide/slide3.jpg"
+                   src="https://tix.vn/app/assets/img/icons/slide/slide3.jpg">
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
