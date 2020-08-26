@@ -1,0 +1,60 @@
+.mobile-ads {
+  background: url("https://tix.vn/app/assets/img/icons/backapp.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 638px;
+  padding: 120px 0 80px 0;
+
+  .mobile-ads__left {
+    color: white;
+    padding: 10px;
+
+    h2 {
+      font-weight: 700;
+      font-size: xx-large;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: medium;
+    }
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+
+  .mobile-ads__right {
+    .iphone {
+      position: relative;
+
+      .phone-img {
+        padding: 0 28%;
+        width: 100%;
+        height: 100%;
+      }
+
+
+      .phone-screen-container {
+        position: absolute;
+        height: 100%;
+        top: 10px;
+        left: 50%;
+        width: 195px;
+        transform: translateX(-50%);
+
+        .phone-screen-wrapper {
+          position: relative;
+          display: block;
+          overflow: hidden;
+          margin: 0;
+          padding: 0;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}

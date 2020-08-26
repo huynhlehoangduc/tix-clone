@@ -99,3 +99,17 @@
     box-shadow: none;
   }
 }
+
+.btn-orange {
+  background: $main-orange;
+  color: white;
+  padding: 10px 20px;
+  &:hover {
+    color: white;
+  }
+}
+
+.custom-container {
+  max-width: 940px;
+  margin: 0 auto;
+}
