@@ -11,6 +11,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { NewsComponent } from './news/news.component';
 import { MobileAdsComponent } from './mobile-ads/mobile-ads.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MobileAdsComponent } from './mobile-ads/mobile-ads.component';
     TixCarouselComponent,
     MovieInfoComponent,
     NewsComponent,
-    MobileAdsComponent
+    MobileAdsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
