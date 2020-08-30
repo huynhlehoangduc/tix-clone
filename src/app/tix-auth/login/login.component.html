@@ -1,0 +1,28 @@
+<div class="signin--wrapper">
+<!--   <h2 class="signin-title">ĐĂNG NHẬP</h2>-->
+  <img class="signin--header" ng-click="backToHomepage(0)" src="https://tix.vn/app/assets/img/login/group@2x.png">
+  <!-- ngInclude: -->
+  <div class="ng-scope">
+    <form action="#">
+      <div class="form-group">
+        <input class="form-control" id="taiKhoan" name="taiKhoan" placeholder="Tài khoản" type="text">
+        <small class="text-mutedhelp-text" style="display: none">Help text</small>
+      </div>
+      <div class="form-group">
+        <input class="form-control" id="matKhau" name="matKhau" placeholder="Mật khẩu" type="password">
+        <small class="text-mutedhelp-text" style="display: none">Help text</small>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-blue-gray">Đăng nhập</button>
+      </div>
+      <input type="hidden" name="maNhom">
+      <input type="hidden" name="maLoaiNguoiDung">
+    </form>
+  </div>
+  <div class="signin-close"></div>
+  <div class="signin--message">Đăng ký để được nhiều ưu đãi, mua vé<br>và bảo mật thông tin!</div>
+  <div class="form-group">
+    <button class="btn btn-link text-orange">Đăng ký</button>
+  </div>
+</div>
