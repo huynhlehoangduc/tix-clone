@@ -13,6 +13,9 @@ import { NewsComponent } from './news/news.component';
 import { MobileAdsComponent } from './mobile-ads/mobile-ads.component';
 import { FooterComponent } from './footer/footer.component';
 
+// Module
+import {TixAuthModule} from './tix-auth/tix-auth.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    TixAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

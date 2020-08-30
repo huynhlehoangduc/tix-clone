@@ -103,9 +103,18 @@
 .btn-orange {
   background: $main-orange;
   color: white;
-  padding: 10px 20px;
   &:hover {
     color: white;
+  }
+}
+
+.btn-blue-gray {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(20, 50, 93, 0.9);
+  color: white;
+  &:hover {
+    color: rgba(20, 50, 93, 0.9);
+    background: white;
   }
 }
 
