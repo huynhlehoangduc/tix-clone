@@ -8,15 +8,13 @@ import { AppComponent } from './app.component';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     // SlickCarouselModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
