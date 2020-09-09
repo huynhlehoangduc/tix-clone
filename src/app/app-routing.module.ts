@@ -6,15 +6,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'auth',
-    // component: TixAuthComponent
-    loadChildren: () =>
-      import('./tix-auth/tix-auth.module').then((m) => m.TixAuthModule),
-  },
-  {
     path: '',
     // component: HomeComponent
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: '',
+    // component: TixAuthComponent
+    loadChildren: () =>
+      import('./tix-auth/tix-auth.module').then((m) => m.TixAuthModule),
   },
 ];
 
