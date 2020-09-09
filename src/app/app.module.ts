@@ -3,32 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { TixCarouselComponent } from './tix-carousel/tix-carousel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // Import your library
-import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { MovieInfoComponent } from './movie-info/movie-info.component';
-import { NewsComponent } from './news/news.component';
-import { MobileAdsComponent } from './mobile-ads/mobile-ads.component';
-import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    TixCarouselComponent,
-    MovieInfoComponent,
-    NewsComponent,
-    MobileAdsComponent,
-    FooterComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SlickCarouselModule
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}

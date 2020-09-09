@@ -1,0 +1,70 @@
+<div class="signin--wrapper">
+  <!-- <h2 class="signin-title">ĐĂNG NHẬP</h2> -->
+  <img class="signin--header" ng-click="backToHomepage(0)" src="https://tix.vn/app/assets/img/login/group@2x.png">
+  <!-- ngInclude: -->
+  <div class="ng-scope">
+    <form #signupForm="ngForm" (ngSubmit)="dangky(signupForm.value)">
+      <div class="form-group">
+        <input #taiKhoan="ngModel"
+               class="form-control"
+               id="taiKhoan"
+               name="taiKhoan"
+               ngModel
+               placeholder="Tài khoản"
+               required
+               type="text"
+        />
+        <ng-container *ngIf="taiKhoan.invalid && (taiKhoan.touched || taiKhoan.dirty)">
+          <small *ngIf="taiKhoan.errors.required" class="text-muted help-text">Tài khoản không
+            được để trống</small>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <input #matKhau="ngModel" class="form-control" id="matKhau" maxlength="20" minlength="6" name="matKhau"
+               ngModel placeholder="Mật khẩu" required type="password"/>
+        <ng-container *ngIf="matKhau.invalid && (matKhau.touched || matKhau.dirty)">
+          <small *ngIf="matKhau.errors.required" class="text-muted help-text">Mật khẩu không
+            được để trống</small>
+          <small *ngIf="matKhau.errors.minlength" class="text-muted help-text">Mật khẩu phải từ 4 ký tự</small>
+          <small *ngIf="matKhau.errors.maxlength" class="text-muted help-text">Mật khẩu phải bé hơn 20 ký tự</small>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <input class="form-control" id="matKhauConfirm" name="matKhauConfirm" ngModel placeholder="Nhập lại mật khẩu"
+               type="password">
+        <small class="text-muted help-text">Help text</small>
+      </div>
+      <div class="form-group">
+        <input class="form-control" id="hoTen" name="hoTen" ngModel placeholder="Họ tên" type="text">
+        <small class="text-muted help-text">Help text</small>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" #email="ngModel" id="email" required name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel placeholder="Email" type="text">
+
+        <ng-container *ngIf="email.invalid && (email.touched || email.dirty)">
+          <small *ngIf="email.errors.required" class="text-muted help-text">Email không được để trống</small>
+          <small *ngIf="email.errors.pattern" class="text-muted help-text">Email Không đúng định dạng</small>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" #soDt="ngModel" id="soDt" name="soDt" ngModel placeholder="Số điện thoại" type="number">
+        <ng-container *ngIf="soDt.invalid && (soDt.touched || soDt.dirty)">
+          <small *ngIf="soDt.errors.required" class="text-muted help-text">Số điện thoại không được để trống</small>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-orange mr-2" type="submit" [disabled]="signupForm.invalid">Đăng ký</button>
+      </div>
+<!--      <input name="maNhom" ngModel type="hidden" value="GP01">-->
+      <input name="maLoaiNguoiDung" type="hidden">
+    </form>
+  </div>
+  <div class="signin-close"></div>
+  <div class="signin--message">Đăng ký để được nhiều ưu đãi, mua vé<br>và bảo mật thông tin!</div>
+  <div class="form-group">
+    <button class="btn btn-link">Đăng nhập</button>
+  </div>
+</div>
