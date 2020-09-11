@@ -2,19 +2,22 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HomeComponent} from './home.component';
 import {RouterModule, Routes} from '@angular/router';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import {NewsComponent} from './news/news.component';
-import {TixCarouselComponent} from './tix-carousel/tix-carousel.component';
+import {HeaderComponent} from './@header/header.component';
+import {FooterComponent} from './@footer/footer.component';
+import {NewsComponent} from './@news/news.component';
+import {TixCarouselComponent} from './@tix-carousel/tix-carousel.component';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
-import {MobileAdsComponent} from './mobile-ads/mobile-ads.component';
-import {MovieInfoComponent} from './movie-info/movie-info.component';
+import {MobileAdsComponent} from './@mobile-ads/mobile-ads.component';
+import {MovieInfoComponent} from './@movie-info/movie-info.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    // children: [],
+    children: [
+      { path: '', component: HomePageComponent}
+    ],
   },
 ];
 
@@ -27,6 +30,7 @@ const routes: Routes = [
     MovieInfoComponent,
     NewsComponent,
     TixCarouselComponent,
+    HomePageComponent,
   ],
   imports: [SlickCarouselModule, CommonModule, RouterModule.forChild(routes)],
   exports: [HomeComponent],
