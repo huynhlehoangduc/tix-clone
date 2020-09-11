@@ -9,12 +9,15 @@ import {TixCarouselComponent} from './tix-carousel/tix-carousel.component';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {MobileAdsComponent} from './mobile-ads/mobile-ads.component';
 import {MovieInfoComponent} from './movie-info/movie-info.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    // children: [],
+    children: [
+      { path: '', component: HomePageComponent}
+    ],
   },
 ];
 
@@ -27,6 +30,7 @@ const routes: Routes = [
     MovieInfoComponent,
     NewsComponent,
     TixCarouselComponent,
+    HomePageComponent,
   ],
   imports: [SlickCarouselModule, CommonModule, RouterModule.forChild(routes)],
   exports: [HomeComponent],
