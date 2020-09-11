@@ -11,6 +11,7 @@ import { MobileAdsComponent } from './@mobile-ads/mobile-ads.component';
 import { MovieInfoComponent } from './@movie-info/movie-info.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { LoadingComponent } from '../core/components/loading/loading.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: '', component: HomePageComponent },
-      { path: 'movie-detail', component: MovieDetailComponent },
+      { path: 'movie-detail/:id', component: MovieDetailComponent },
     ],
   },
 ];
@@ -34,6 +35,7 @@ const routes: Routes = [
     TixCarouselComponent,
     HomePageComponent,
     MovieDetailComponent,
+    LoadingComponent,
   ],
   imports: [SlickCarouselModule, CommonModule, RouterModule.forChild(routes)],
   exports: [HomeComponent],
