@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       taiKhoan: new FormControl('', [Validators.required]),
       matKhau: new FormControl('', [
@@ -39,7 +40,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe({
       next: (res) => console.log(res),
       error: (err) => console.log(err),
-      complete: () => console.log('Đăng nhập thành công'),
+      complete: () => {
+        console.log('Đăng nhập thành công');
+        this.router.navigate(['/']);
+      },
     });
   }
 

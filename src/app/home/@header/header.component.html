@@ -1,7 +1,9 @@
 <header class="header">
   <nav class="navbar py-0 px-3 navbar-expand-md navbar-light">
-    <a class="navbar-brand" href="#">
-      <img alt="" src="https://tix.vn/app/assets/img/icons/web-logo.png" />
+    <a class="navbar-brand"
+       href="#">
+      <img alt=""
+           src="https://tix.vn/app/assets/img/icons/web-logo.png"/>
     </a>
     <button
       class="navbar-toggler"
@@ -10,13 +12,14 @@
       type="button"
     >
       <img
+        alt=""
+        height="20px"
         src="https://tix.vn/app/assets/img/icons/menu-options.png"
         width="25px"
-        height="20px"
-        alt=""
       />
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse"
+         id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <div class="nav-item nav-item--mobile">
           <a href="#">
@@ -24,46 +27,61 @@
               class="btnLogin btnAvatarMobile"
               src="https://tix.vn/app/assets/img/avatar.png"
             />
-            <span class="mx-4">Đăng nhập</span>
+            <a class="mx-4"
+               routerLink="/login">Đăng nhập</a>
           </a>
           <img
-            width="20px"
-            src="https://tix.vn/app/assets/img/icons/next-session.png"
+            class="close icon-arrow-right"
             data-target="#navbarNavAltMarkup"
             data-toggle="collapse"
-            class="close icon-arrow-right"
+            src="https://tix.vn/app/assets/img/icons/next-session.png"
+            width="20px"
           />
         </div>
-        <a class="nav-item nav-link active" href="#">Lịch chiếu</a>
-        <a class="nav-item nav-link" href="#">Cụm rạp</a>
-        <a class="nav-item nav-link" href="#">Tin tức</a>
-        <a class="nav-item nav-link" href="#">Ứng dụng</a>
+        <a class="nav-item nav-link active"
+           href="#">Lịch chiếu</a>
+        <a class="nav-item nav-link"
+           href="#">Cụm rạp</a>
+        <a class="nav-item nav-link"
+           href="#">Tin tức</a>
+        <a class="nav-item nav-link"
+           href="#">Ứng dụng</a>
       </div>
     </div>
     <div class="header__right ml-auto">
       <div class="d-flex align-items-center">
         <img
+          alt=""
           class="register-img mr-2"
           src="https://tix.vn/app/assets/img/avatar.png"
           width="30px"
-          alt=""
         />
-        <span class="register-span mr-3">Đăng nhập</span>
+
+        <span *ngIf="currentUser!=null ; else dangNhapSpan"
+              class="register-span mr-3">{{ currentUser.hoTen }}</span>
+        <ng-template #dangNhapSpan>
+          <span class="register-span mr-3"
+                routerLink="/login">Đăng nhập</span>
+        </ng-template>
         <div class="dropdown header__location d-flex align-items-center">
           <button
-            class="btn dropdown-toggle"
-            type="button"
-            id="triggerId"
-            data-toggle="dropdown"
-            aria-haspopup="true"
             aria-expanded="false"
+            aria-haspopup="true"
+            class="btn dropdown-toggle"
+            data-toggle="dropdown"
+            id="triggerId"
+            type="button"
           >
             <i class="fa fa-map-marker-alt mr-1"></i> HCM
           </button>
-          <div class="dropdown-menu" aria-labelledby="triggerId">
-            <a class="dropdown-item" href="#">Hồ Chí Minh</a>
-            <a class="dropdown-item" href="#">Hà Nội</a>
-            <a class="dropdown-item" href="#">Đà Nắng</a>
+          <div aria-labelledby="triggerId"
+               class="dropdown-menu">
+            <a class="dropdown-item"
+               href="#">Hồ Chí Minh</a>
+            <a class="dropdown-item"
+               href="#">Hà Nội</a>
+            <a class="dropdown-item"
+               href="#">Đà Nắng</a>
           </div>
         </div>
       </div>
