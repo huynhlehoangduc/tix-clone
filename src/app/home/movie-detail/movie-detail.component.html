@@ -3,7 +3,7 @@
        alt="">
   <app-loading [loading]="!this.isLoaded"></app-loading>
 
-  <div *ngIf="this.isLoaded"
+  <div *ngIf="this.isLoaded && movie"
        class="movie-info-conatiner p-5">
     <div class="max-width-940 row">
       <div class="col-3">

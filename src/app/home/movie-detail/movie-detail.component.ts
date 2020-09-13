@@ -12,17 +12,7 @@ import { MovieService } from '../../core/services/movie.service';
 export class MovieDetailComponent implements OnInit {
 
   public maPhim: number;
-  public movie: Movie = {
-    'maPhim': null,
-    'tenPhim': null,
-    'biDanh': null,
-    'trailer': null,
-    'hinhAnh': null,
-    'moTa': null,
-    'maNhom': null,
-    'ngayKhoiChieu': null,
-    'danhGia': null
-  };
+  public movie: Movie | null = null;
   public subParam: Subscription;
   public isLoaded = false;
 
