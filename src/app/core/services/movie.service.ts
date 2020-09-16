@@ -21,7 +21,7 @@ export class MovieService {
     return this.apiService.get<Movie[]>(this.baseEndpoint + '/LayThongTinPhim?MaPhim=' + id);
   }
 
-  getListMoviePaging(page, perPage): Observable<any> {
+  getListMoviePaging(page: string = '1', perPage: string = '12'): Observable<any> {
     return this.apiService.get(`${this.baseEndpoint}/LayDanhSachPhimPhanTrang?maNhom=${this.maNhom}&soTrang=${page}&soPhanTuTrenTrang=${perPage}`);
   }
 
