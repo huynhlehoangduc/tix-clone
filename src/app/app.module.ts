@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Import your library
 
@@ -23,7 +24,8 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http';
       thick: true,
       spinner: false
     }),
-    NgProgressHttpModule
+    NgProgressHttpModule,
+    BrowserAnimationsModule
     /* End - Top Progress Bar for App*/
   ],
   providers: [
