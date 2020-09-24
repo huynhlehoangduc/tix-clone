@@ -1,0 +1,179 @@
+<div class="movie-info">
+  <div class="buy-now-container px-3 py-4 d-flex align-items-center">
+    <div class="dropdown buy-now-container__film ">
+      <button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle py-2" data-toggle="dropdown"
+              id="triggerId"
+              type="button">
+        Phim
+      </button>
+      <div aria-labelledby="triggerId" class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item disabled" href="#">Disabled action</a>
+        <h6 class="dropdown-header">Section header</h6>
+        <a class="dropdown-item" href="#">Action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">After divider action</a>
+      </div>
+    </div>
+    <div class="dropdown buy-now-container__film-info">
+      <button aria-expanded="false" aria-haspopup="true" class="btn py-2 dropdown-toggle" data-toggle="dropdown"
+              id="triggerId"
+              type="button">
+        Rạp
+      </button>
+      <div aria-labelledby="triggerId" class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item disabled" href="#">Disabled action</a>
+        <h6 class="dropdown-header">Section header</h6>
+        <a class="dropdown-item" href="#">Action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">After divider action</a>
+      </div>
+    </div>
+    <div class="dropdown buy-now-container__film-info">
+      <button aria-expanded="false" aria-haspopup="true" class="btn py-2 dropdown-toggle" data-toggle="dropdown"
+              id="triggerId"
+              type="button">
+        Ngày xem
+      </button>
+      <div aria-labelledby="triggerId" class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item disabled" href="#">Disabled action</a>
+        <h6 class="dropdown-header">Section header</h6>
+        <a class="dropdown-item" href="#">Action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">After divider action</a>
+      </div>
+    </div>
+    <div class="dropdown buy-now-container__film-info">
+      <button aria-expanded="false" aria-haspopup="true" class="btn py-2 dropdown-toggle" data-toggle="dropdown"
+              id="triggerId"
+              type="button">
+        Xuất chiếu
+      </button>
+      <div aria-labelledby="triggerId" class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item disabled" href="#">Disabled action</a>
+        <h6 class="dropdown-header">Section header</h6>
+        <a class="dropdown-item" href="#">Action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">After divider action</a>
+      </div>
+    </div>
+
+    <button class="btn btn-dark buy-now-container__film-info py-2">Mua vé ngay</button>
+  </div>
+
+  <div class="movie-nav-container d-flex justify-content-center">
+    <a class="movie-nav-item active" href="#dang-chieu">Đang chiếu</a>
+    <a class="movie-nav-item" href="#sap-chieu">Sắp chiếu</a>
+  </div>
+
+  <div class="movie-info__list">
+    <ngx-slick-carousel #slickModal="slick-carousel"
+                        [config]="slideConfig"
+                        class="carousel">
+      <div *ngFor="let slide of slideMovies" class="slide" ngxSlickItem>
+        <div class="row">
+          <div *ngFor="let movie of slide" class="movie-card col-3 my-3">
+            <div class="img-card mb-2">
+              <img alt="" class="rounded" src="{{ movie.hinhAnh }}" width="100%">
+              <div class="btn-play-container">
+                <button class="btn-play" data-url="{{ movie.trailer }}">
+                  <img class="movie-card__img-play" src="https://tix.vn/app/assets/img/icons/play-video.png">
+                </button>
+              </div>
+            </div>
+            <div class="movie-card__info">
+              <h5 class="movie-card__info-detail"><span class="badge badge-success p-2 mr-2">C13</span>{{ movie.tenPhim }}
+              </h5>
+              <span class="movie-card__info-detail">{{ movie.ngayKhoiChieu | date : 'dd.MM.yyyy' }}</span>
+              <a class="py-2 btn w-100 movie-card__buy-now" routerLink="movie-detail/{{ movie.maPhim }}">MUA NGAY</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+
+  <div class="movie-info-theater d-flex rounded">
+    <div class="theater-group">
+      <a class="theater-group-icon active" href="#">
+        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/ee621ee05dcd4565caead4f29421b41e.png">
+      </a>
+      <a class="theater-group-icon" href="#">
+        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png">
+      </a>
+      <a class="theater-group-icon" href="#">
+        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/16b811ab4773065c15eb0e9be67527b3.png">
+      </a>
+    </div>
+    <div class="theater-location">
+      <div class="movie-wraper active d-flex">
+        <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+        <div class="wrap-info">
+          <p>
+            <span class="text-orange">CGV</span> - Vĩnh Trung Plaza
+          </p>
+          <p>
+            <span class="fs-12 text-smoke">255-257, đường Hùng Vương</span>
+          </p>
+          <p>
+            <a class="text-orange fs-12" href="#">[Chi tiết]</a>
+          </p>
+        </div>
+      </div>
+      <div class="movie-wraper d-flex">
+        <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+        <div class="wrap-info">
+          <p>
+            <span class="text-orange">CGV</span> - Vĩnh Trung Plaza
+          </p>
+          <p>
+            <span class="fs-12 text-smoke">255-257, đường Hùng Vương</span>
+          </p>
+          <p>
+            <a class="text-orange fs-12" href="#">[Chi tiết]</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="theater-time-place">
+      <!--      <h5 class="text-center">Không có suất chiếu</h5>-->
+      <div class="movie-wraper active">
+        <div class="d-flex">
+          <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+          <div class="wrap-info">
+            <p>
+              <span class="badge badge-orange">C16</span> - KẺ đánh cắp giấc mơ
+            </p>
+            <p>
+              <span class="fs-12 text-smoke">86 phút - TIX 6.2 - IMDb 0</span>
+            </p>
+          </div>
+        </div>
+        <p class="s-version">2D digital</p>
+        <button class="btn btn-light-custom">
+          <span class="main-time">21:40</span> <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>
+        </button>
+      </div>
+      <div class="movie-wraper">
+        <div class="d-flex">
+          <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+          <div class="wrap-info">
+            <p>
+              <span class="badge badge-orange">C16</span> - KẺ đánh cắp giấc mơ
+            </p>
+            <p>
+              <span class="fs-12 text-smoke">86 phút - TIX 6.2 - IMDb 0</span>
+            </p>
+          </div>
+        </div>
+        <p class="s-version">2D digital</p>
+        <button class="btn btn-light-custom">
+          <span class="main-time">21:40</span> <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

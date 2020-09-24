@@ -1,0 +1,34 @@
+<div class="movie-detail-container">
+  <img class="bg-section" src="https://s3img.vcdn.vn/123phim/2020/09/ac-quy-doi-dau-deliver-us-from-evil-c16-15994546882305.jpg"
+       alt="">
+  <app-loading [loading]="!this.isLoaded"></app-loading>
+
+  <div *ngIf="this.isLoaded && movie"
+       class="movie-info-conatiner p-5">
+    <div class="max-width-940 row">
+      <div class="col-3">
+        <div class="movie-img">
+          <img alt=""
+               class="rounded"
+               src="{{ movie.hinhAnh }}">
+          <div class="btn-play-container">
+            <button class="btn-play">
+              <img src="https://tix.vn/app/assets/img/icons/play-video.png">
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 d-flex align-items-center movie-info">
+        <div class="">
+          <div>
+            <span class="detailMainInfo1 ng-binding">{{ movie.ngayKhoiChieu | date: 'dd.MM.yyyy' }}</span><br>
+          </div>
+          <h3>{{ movie.tenPhim }}</h3>
+          <p class="detailMainInfo1 ng-binding">{{ movie.moTa }}</p>
+          <button class="btn btn-orange mr-3 px-4">Mua vé</button>
+        </div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</div>

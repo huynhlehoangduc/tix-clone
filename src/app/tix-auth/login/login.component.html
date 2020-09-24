@@ -1,0 +1,54 @@
+<div class="signin--wrapper">
+  <!--   <h2 class="signin-title">ĐĂNG NHẬP</h2>-->
+  <img class="signin--header"
+       ng-click="backToHomepage(0)"
+       src="https://tix.vn/app/assets/img/login/group@2x.png">
+  <!-- ngInclude: -->
+  <div class="ng-scope">
+    <form (ngSubmit)="dangNhap()"
+          [formGroup]="loginForm">
+      <div class="form-group">
+        <input class="form-control"
+               formControlName="taiKhoan"
+               id="taiKhoan"
+               placeholder="Tài khoản"
+               type="text">
+        <ng-container
+          *ngIf="loginForm.get('taiKhoan').invalid && (loginForm.get('taiKhoan').touched || loginForm.get('taiKhoan').dirty)">
+          <small *ngIf="loginForm.get('taiKhoan').errors.required"
+                 class="text-muted help-text">Không được để trống</small>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control"
+               formControlName="matKhau"
+               id="matKhau"
+               placeholder="Mật khẩu"
+               type="password">
+        <ng-container
+          *ngIf="loginForm.get('matKhau').invalid && (loginForm.get('matKhau').touched || loginForm.get('matKhau').dirty)">
+          <small *ngIf="loginForm.get('matKhau').errors.required"
+                 class="text-muted help-text">Không được để trống</small>
+          <small *ngIf="loginForm.get('matKhau').errors.minlength"
+                 class="text-muted help-text">Tối thiểu 4 ký tự</small>
+          <small *ngIf="loginForm.get('matKhau').errors.maxlength"
+                 class="text-muted help-text">Tối đa 4 ký tự</small>
+        </ng-container>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-blue-gray">Đăng nhập</button>
+      </div>
+      <input name="maNhom"
+             type="hidden">
+      <input name="maLoaiNguoiDung"
+             type="hidden">
+    </form>
+  </div>
+  <div class="signin-close"></div>
+  <div class="signin--message">Đăng ký để được nhiều ưu đãi, mua vé<br>và bảo mật thông tin!</div>
+  <div class="form-group">
+    <button class="btn btn-link text-orange">Đăng ký</button>
+  </div>
+</div>

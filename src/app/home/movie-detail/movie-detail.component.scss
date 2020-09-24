@@ -1,0 +1,31 @@
+.movie-detail-container {
+  position: relative;
+
+  .bg-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    filter: blur(15px);
+  }
+
+  .movie-info-conatiner {
+    position: relative;
+
+    .movie-img {
+      position: relative;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .movie-info {
+      * {
+        color: white;
+      }
+    }
+  }
+}

@@ -21,8 +21,11 @@
     "@angular/router": "~10.0.9",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
+    "ngx-progressbar": "^6.0.3",
+    "ngx-slick-carousel": "^0.5.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.5",
+    "slick-carousel": "^1.8.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },

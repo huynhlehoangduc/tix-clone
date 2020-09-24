@@ -1,0 +1,148 @@
+.header {
+  box-shadow: 0 1px 2px #ccc;
+
+  .nav-link {
+    font-weight: bold;
+    color: black;
+  }
+
+  .navbar-brand {
+    img {
+      width: 50px;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  .navbar-toggler {
+    border: 0;
+
+    &:active, &:focus, &:visited {
+      border: 0;
+      outline: none;
+    }
+  }
+
+  .btnAvatarMobile {
+    width: 40px;
+    border-radius: 50%;
+  }
+
+  &__right {
+    color: #9b9b9b!important;
+
+    .register-img {
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .register-span {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 2.5rem;
+        background: #ccc;
+        right: -.6rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &__location {
+    height: 4rem;
+    .btn.dropdown-toggle {
+      color: #9b9b9b!important;
+      width: 10rem;
+      text-align: start;
+
+      &:focus, &:active {
+        outline: none!important;
+        box-shadow: none!important;
+      }
+
+      &::after {
+        margin-left: 3rem;
+      }
+    }
+    .dropdown-menu.show {
+      box-shadow: 0px 0px 2px #ccc;
+      border: 1px solid transparent;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    .navbar {
+      position: relative;
+
+      .navbar-collapse {
+        position: absolute;
+        padding: 0 !important;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .nav-item--mobile {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    .nav-item {
+      padding: 20px;
+      font-size: 1.28rem;
+    }
+
+    .navbar-collapse {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 75%;
+      height: 100%;
+
+      &::before {
+        content: '';
+        transition: .35s all ease-in-out;
+      }
+    }
+
+    .navbar-collapse.collapsing {
+      right: -75%;
+      transition: height 0s ease;
+    }
+
+    .navbar-collapse.show {
+      right: 0;
+      transition: right 300ms ease-in-out;
+
+      &::before {
+        position: absolute;
+        content: '';
+        width: 200%;
+        height: 100%;
+        background: rgba(0,0,0,.8);
+        left: -200%;
+      }
+    }
+
+    .navbar-toggler.collapsed ~ .navbar-collapse {
+      transition: right 500ms ease-in-out;
+    }
+
+    .navbar-nav {
+      box-shadow: -1px 0px 2px #ccc;
+      height: 200%;
+      background: white;
+    }
+    &__right {
+      display: none;
+    }
+  }
+}
