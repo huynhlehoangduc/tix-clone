@@ -18,6 +18,7 @@ const route: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
       {path: '', component: MovieComponent},
+      {path: '/movie', component: MovieComponent},
     ]
   }
 ];
