@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin',
@@ -7,7 +6,6 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: MatSidenav;
 
   constructor() {
   }
