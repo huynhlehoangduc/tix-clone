@@ -11,20 +11,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { PipesModule } from '../core/pipes/pipes.module';
+
 
 const route: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
       {path: '', component: MovieComponent},
-      {path: '/movie', component: MovieComponent},
+      {path: 'movie', component: MovieComponent},
     ]
   }
 ];
 
 @NgModule({
-  declarations: [AdminComponent, MovieComponent, AdminNavComponent],
+  declarations: [AdminComponent, MovieComponent],
   imports: [
     RouterModule.forChild(route),
     CommonModule,
@@ -33,7 +36,10 @@ const route: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
-    LayoutModule
+    LayoutModule,
+    MatTableModule,
+    MatButtonToggleModule,
+    PipesModule
   ]
 })
 export class AdminModule { }

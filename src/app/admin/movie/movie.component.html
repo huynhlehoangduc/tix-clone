@@ -1,1 +1,44 @@
-<p>movie works!</p>
+<table [dataSource]="dataSource"
+       class="mat-elevation-z8"
+       mat-table width="100%">
+  <!-- Position Column -->
+  <ng-container matColumnDef="maPhim">
+    <th *matHeaderCellDef
+        mat-header-cell> Mã phim
+    </th>
+    <td *matCellDef="let element"
+        mat-cell> {{element.maPhim}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="tenPhim">
+    <th *matHeaderCellDef
+        mat-header-cell> Tên Phim
+    </th>
+    <td *matCellDef="let element"
+        mat-cell> {{element.tenPhim}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="ngayKhoiChieu">
+    <th *matHeaderCellDef
+        mat-header-cell> Ngày Khởi chiếu
+    </th>
+    <td *matCellDef="let element"
+        mat-cell> {{element.ngayKhoiChieu}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="moTa">
+    <th *matHeaderCellDef
+        mat-header-cell> Mô tả
+    </th>
+    <td *matCellDef="let element"
+        mat-cell title="{{ element.moTa }}"> {{element.moTa | shortStr:50 }} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns"
+      mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;"
+      mat-row></tr>
+</table>
