@@ -37,7 +37,11 @@ const routes: Routes = [
     MovieDetailComponent,
     LoadingComponent,
   ],
-  imports: [SlickCarouselModule, CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    SlickCarouselModule,
+    CommonModule,
+    RouterModule.forChild(routes),
+  ],
   exports: [HomeComponent],
 })
 export class HomeModule {
