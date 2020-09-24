@@ -77,18 +77,18 @@
         <div class="row">
           <div *ngFor="let movie of slide" class="movie-card col-3 my-3">
             <div class="img-card mb-2">
-              <img alt="" class="rounded" src="{{ movie.imgPath }}" width="100%">
+              <img alt="" class="rounded" src="{{ movie.hinhAnh }}" width="100%">
               <div class="btn-play-container">
-                <button class="btn-play" data-url="{{ movie.imgPath }}">
+                <button class="btn-play" data-url="{{ movie.trailer }}">
                   <img class="movie-card__img-play" src="https://tix.vn/app/assets/img/icons/play-video.png">
                 </button>
               </div>
             </div>
             <div class="movie-card__info">
-              <h5 class="movie-card__info-detail"><span class="badge badge-success p-2 mr-2">C13</span>{{ movie.name }}
+              <h5 class="movie-card__info-detail"><span class="badge badge-success p-2 mr-2">C13</span>{{ movie.tenPhim }}
               </h5>
-              <span class="movie-card__info-detail">{{ movie.duration }}</span>
-              <button class="py-2 btn w-100 movie-card__buy-now">MUA NGAY</button>
+              <span class="movie-card__info-detail">{{ movie.ngayKhoiChieu | date : 'dd.MM.yyyy' }}</span>
+              <a class="py-2 btn w-100 movie-card__buy-now" routerLink="movie-detail/{{ movie.maPhim }}">MUA NGAY</a>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { ConstValue } from '../../core/models/ConstValue';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +16,7 @@ export class SigninComponent implements OnInit {
 
   @ViewChild('signupForm') signupForm: NgForm;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,7 +26,10 @@ export class SigninComponent implements OnInit {
     this.authService.signin({...values, maNhom: ConstValue.maNhom}).subscribe({
       next: (res) => console.log(res),
       error: (err) => console.log(err),
-      complete: () => console.log('Đăng ký thành công'),
+      complete: () => {
+        console.log('Đăng ký thành công');
+        this.router.navigate(['/login']);
+      },
     });
   }
 
