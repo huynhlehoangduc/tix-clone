@@ -20,10 +20,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     /* Top Progress Bar for App*/
     NgProgressModule.withConfig({
-      spinnerPosition: 'left',
+      spinnerPosition: 'right',
       color: '#fb4226',
       thick: true,
-      spinner: false
+      spinner: true,
     }),
     NgProgressHttpModule,
     BrowserAnimationsModule
