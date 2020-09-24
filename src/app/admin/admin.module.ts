@@ -15,6 +15,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PipesModule } from '../core/pipes/pipes.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 const route: Routes = [
@@ -39,7 +41,9 @@ const route: Routes = [
     LayoutModule,
     MatTableModule,
     MatButtonToggleModule,
-    PipesModule
+    PipesModule,
+    MatPaginatorModule,
+    MatFormFieldModule
   ]
 })
 export class AdminModule { }

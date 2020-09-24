@@ -1,44 +1,76 @@
-<table [dataSource]="dataSource"
-       class="mat-elevation-z8"
-       mat-table width="100%">
-  <!-- Position Column -->
-  <ng-container matColumnDef="maPhim">
-    <th *matHeaderCellDef
-        mat-header-cell> Mã phim
-    </th>
-    <td *matCellDef="let element"
-        mat-cell> {{element.maPhim}} </td>
-  </ng-container>
+<div class="mat-elevation-z8">
+  <table [dataSource]="dataSource"
+         class="mat-elevation-z8"
+         mat-table
+         width="100%">
+    <!-- Position Column -->
+    <ng-container matColumnDef="maPhim">
+      <th *matHeaderCellDef
+          mat-header-cell> Mã phim
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.maPhim}} </td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="tenPhim">
-    <th *matHeaderCellDef
-        mat-header-cell> Tên Phim
-    </th>
-    <td *matCellDef="let element"
-        mat-cell> {{element.tenPhim}} </td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="tenPhim">
+      <th *matHeaderCellDef
+          mat-header-cell> Tên Phim
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.tenPhim}} </td>
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="ngayKhoiChieu">
-    <th *matHeaderCellDef
-        mat-header-cell> Ngày Khởi chiếu
-    </th>
-    <td *matCellDef="let element"
-        mat-cell> {{element.ngayKhoiChieu}} </td>
-  </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ngayKhoiChieu">
+      <th *matHeaderCellDef
+          mat-header-cell> Ngày Khởi chiếu
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.ngayKhoiChieu | date: "dd-MM-yyyy"}} </td>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="moTa">
-    <th *matHeaderCellDef
-        mat-header-cell> Mô tả
-    </th>
-    <td *matCellDef="let element"
-        mat-cell title="{{ element.moTa }}"> {{element.moTa | shortStr:50 }} </td>
-  </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="moTa">
+      <th *matHeaderCellDef
+          mat-header-cell> Mô tả
+      </th>
+      <td *matCellDef="let element"
+          mat-cell
+          title="{{ element.moTa }}"> {{element.moTa | shortStr:50 }} </td>
+    </ng-container>
 
-  <tr *matHeaderRowDef="displayedColumns"
-      mat-header-row></tr>
-  <tr *matRowDef="let row; columns: displayedColumns;"
-      mat-row></tr>
-</table>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <th *matHeaderCellDef
+          class="text-center"
+          mat-header-cell>
+        <button color="primary"
+                mat-mini-fab
+                title="Tạo mới">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td *matCellDef="let element"
+          class="text-center"
+          mat-cell>
+        <button color="primary"
+                mat-icon-button
+                title="Chỉnh sửa">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button color="warn"
+                mat-icon-button
+                title="Xóa">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns"
+        mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;"
+        mat-row></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>

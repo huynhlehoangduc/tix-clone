@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MovieService } from '../../core/services/movie.service';
 import { Movie } from '../../core/models/Movie';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-movie',
@@ -10,11 +13,11 @@ import { Movie } from '../../core/models/Movie';
 
 
 export class MovieComponent implements OnInit {
-  dataSource: Movie[] = [];
-  displayedColumns = ['maPhim', 'tenPhim', 'moTa', 'ngayKhoiChieu'];
-  expandedElement: any | null;
+  dataSource: MatTableDataSource<Movie>;
+  displayedColumns = ['maPhim', 'tenPhim', 'moTa', 'ngayKhoiChieu', 'action'];
 
-  render = false;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private movieService: MovieService) {
   }
@@ -22,13 +25,13 @@ export class MovieComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getListMovie().subscribe({
       next: value => {
-        this.dataSource = value;
+        this.dataSource = new MatTableDataSource(value);
+        ;
         console.log(value);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     });
-  }
-
-  renderTable() {
-    this.render = true;
   }
 }
