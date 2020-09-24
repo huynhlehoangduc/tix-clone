@@ -22,7 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 const route: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
-      {path: '', component: MovieComponent},
+      {path: '', redirectTo: 'movie',},
       {path: 'movie', component: MovieComponent},
     ]
   }
