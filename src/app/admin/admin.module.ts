@@ -17,6 +17,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { PipesModule } from '../core/pipes/pipes.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LichChieuComponent } from './lich-chieu/lich-chieu.component';
+import { UserComponent } from './user/user.component';
 
 
 const route: Routes = [
@@ -24,12 +26,14 @@ const route: Routes = [
     path: 'admin', component: AdminComponent, children: [
       {path: '', redirectTo: 'movie',},
       {path: 'movie', component: MovieComponent},
+      {path: 'lich-chieu', component: LichChieuComponent},
+      {path: 'nguoi-dung', component: UserComponent},
     ]
   }
 ];
 
 @NgModule({
-  declarations: [AdminComponent, MovieComponent],
+  declarations: [AdminComponent, MovieComponent, LichChieuComponent, UserComponent],
   imports: [
     RouterModule.forChild(route),
     CommonModule,
