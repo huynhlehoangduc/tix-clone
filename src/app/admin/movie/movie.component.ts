@@ -26,7 +26,7 @@ export class MovieComponent implements OnInit {
     this.movieService.getListMovie().subscribe({
       next: value => {
         this.dataSource = new MatTableDataSource(value);
-        ;
+
         console.log(value);
 
         this.dataSource.paginator = this.paginator;

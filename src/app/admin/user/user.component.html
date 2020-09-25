@@ -1,1 +1,86 @@
-<p>user works!</p>
+<h3>Danh sách người dùng</h3>
+
+<div class="mat-elevation-z8">
+  <table [dataSource]="dataSource"
+         class="mat-elevation-z8"
+         mat-table
+         width="100%">
+    <!-- Position Column -->
+    <ng-container matColumnDef="taiKhoan">
+      <th *matHeaderCellDef
+          mat-header-cell> Tài khoản
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.taiKhoan}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="hoTen">
+      <th *matHeaderCellDef
+          mat-header-cell> Họ tên
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.hoTen}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th *matHeaderCellDef
+          mat-header-cell> Email
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="soDt">
+      <th *matHeaderCellDef
+          mat-header-cell> Số điện thoại
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.soDt}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="maLoaiNguoiDung">
+      <th *matHeaderCellDef
+          mat-header-cell> Loại người dùng
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.maLoaiNguoiDung}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <th *matHeaderCellDef
+          class="text-center"
+          mat-header-cell>
+        <button color="primary"
+                mat-mini-fab
+                title="Tạo mới">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td *matCellDef="let element"
+          class="text-center"
+          mat-cell>
+        <button color="primary"
+                mat-icon-button
+                title="Chỉnh sửa">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button color="warn"
+                mat-icon-button
+                title="Xóa">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns"
+        mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;"
+        mat-row></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>
