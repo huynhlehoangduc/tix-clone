@@ -4,6 +4,8 @@ import { Movie } from '../../core/models/Movie';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateMovieDialogComponent } from '../create-movie-dialog/create-movie-dialog.component';
 
 @Component({
   selector: 'app-movie',
@@ -19,7 +21,8 @@ export class MovieComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -33,5 +36,20 @@ export class MovieComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     });
+  }
+
+  createMovie(): void {
+    const dialogRef = this.dialog.open(CreateMovieDialogComponent, {
+      width: '500px',
+      data: { tenPhim: '123' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+
+    /*dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });*/
   }
 }

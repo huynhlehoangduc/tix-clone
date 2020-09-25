@@ -47,7 +47,8 @@
       <th *matHeaderCellDef
           class="text-center"
           mat-header-cell>
-        <button color="primary"
+        <button (click)="createMovie()"
+                color="primary"
                 mat-mini-fab
                 title="Tạo mới">
           <mat-icon>add</mat-icon>
