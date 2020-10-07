@@ -9,7 +9,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const user = window.localStorage.getItem('currentUser');
+   /* const user = window.localStorage.getItem('currentUser');
     const requestClone = request;
     const headersConfig: any = {
       'Content-type': 'application/json',
@@ -25,6 +25,19 @@ export class AuthInterceptor implements HttpInterceptor {
     requestClone.clone({
       setHeaders: headersConfig,
     });
-    return next.handle(requestClone);
+    return next.handle(requestClone);*/
+
+    const userLogin = localStorage.getItem('currentUser');
+    if (userLogin) {
+      const { accessToken } = JSON.parse(userLogin);
+      const req = request.clone({
+        headers: request.headers.append(
+          'Authorization',
+          `Bearer ${accessToken}`
+        ),
+      });
+      return next.handle(req);
+    }
+    return next.handle(request);
   }
 }

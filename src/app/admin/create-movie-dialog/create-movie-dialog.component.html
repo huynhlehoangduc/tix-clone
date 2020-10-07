@@ -1,12 +1,71 @@
-<h1 mat-dialog-title>Hi {{data.tenPhim}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.tenPhim">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-</div>
+<h1 mat-dialog-title>Tạo mới Phim</h1>
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="formM"
+      novalidate>
+  <div mat-dialog-content>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Tên phim</mat-label>
+      <input
+        formControlName="tenPhim"
+        matInput>
+    </mat-form-field>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Bí danh</mat-label>
+      <input
+        formControlName="biDanh"
+        matInput>
+    </mat-form-field>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Trailer</mat-label>
+      <input
+        formControlName="trailer"
+        matInput>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2" appearance="fill">
+      <mat-label>Ngày khởi chiếu</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="ngayKhoiChieu">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100 p-2">
+      <mat-label>Mô tả</mat-label>
+      <textarea formControlName="moTa"
+                matInput
+                cols="30"
+                rows="4"></textarea>
+    </mat-form-field>
+
+    <div class="w-100">
+      <button (click)="fileInput.click()"
+              color="primary"
+              mat-raised-button
+              type="button">
+        <span>Chọn hình</span>
+      </button>
+      <img #imgHinhAnh
+           alt=""
+           class="ml-2 img-fluid rounded"
+           src=""
+           style="height: 100px">
+      <span *ngIf="formM.value.hinhAnh"
+            class="ml-2">{{ formM.value.hinhAnh.name }}
+        ({{ formM.value.hinhAnh.size / 1024 / 1024 | number }}MB)</span>
+      <input #fileInput
+             (change)="onFileSelected($event)"
+             style="display:none;"
+             type="file"/>
+    </div>
+  </div>
+  <div align="end"
+       mat-dialog-actions>
+    <button color="primary"
+            mat-raised-button
+            type="submit">Lưu
+    </button>
+    <button (click)="onNoClick()"
+            mat-button>Hủy
+    </button>
+  </div>
+</form>

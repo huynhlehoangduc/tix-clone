@@ -18,8 +18,11 @@ import { LichChieuComponent } from './lich-chieu/lich-chieu.component';
 import { UserComponent } from './user/user.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateMovieDialogComponent } from './create-movie-dialog/create-movie-dialog.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 const route: Routes = [
@@ -51,8 +54,13 @@ const route: Routes = [
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  providers: [MatDatepickerModule],
 })
 export class AdminModule {
 }

@@ -40,7 +40,7 @@ export class MovieComponent implements OnInit {
 
   createMovie(): void {
     const dialogRef = this.dialog.open(CreateMovieDialogComponent, {
-      width: '500px',
+      width: '650px',
       data: { tenPhim: '123' }
     });
 

@@ -9,6 +9,7 @@ import { NgProgressModule } from 'ngx-progressbar';
 import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
 
 // Import your library
 
@@ -30,7 +31,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     /* End - Top Progress Bar for App*/
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ],
   bootstrap: [AppComponent],
 })
