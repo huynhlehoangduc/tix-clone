@@ -23,6 +23,7 @@ import { CreateMovieDialogComponent } from './create-movie-dialog/create-movie-d
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SharedModule } from '../core/shared/shared.module';
 
 
 const route: Routes = [
@@ -58,7 +59,8 @@ const route: Routes = [
     ReactiveFormsModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    SharedModule
   ],
   providers: [MatDatepickerModule],
 })

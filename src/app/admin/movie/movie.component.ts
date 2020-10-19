@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateMovieDialogComponent } from '../create-movie-dialog/create-movie-dialog.component';
+import { ConfirmDialogComponent } from '../../core/shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-movie',
@@ -51,5 +52,15 @@ export class MovieComponent implements OnInit {
     /*dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });*/
+  }
+
+  deleteMovie(id): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '650px',
+      data: 'Bạn có muốn xóa',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Delete movie:', result);
+    });
   }
 }
