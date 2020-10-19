@@ -58,8 +58,14 @@ export class CreateMovieDialogComponent implements OnInit {
       return;
     }
 
-    const { ngayKhoiChieu } = this.formM.value,
-      ngayKhoiChieuParsed = ngayKhoiChieu.getDate() + '/' + (ngayKhoiChieu.getMonth() + 1) + '/' + ngayKhoiChieu.getFullYear();
+    const { ngayKhoiChieu } = this.formM.value;
+    let dNgayKhoiChieu = ngayKhoiChieu.getDate(),
+      mNgayKhoiChieu = ngayKhoiChieu.getMonth() + 1;
+
+    dNgayKhoiChieu = dNgayKhoiChieu < 10 ? `0${dNgayKhoiChieu}` : dNgayKhoiChieu;
+    mNgayKhoiChieu = mNgayKhoiChieu < 10 ? `0${mNgayKhoiChieu}` : mNgayKhoiChieu;
+
+    const ngayKhoiChieuParsed = dNgayKhoiChieu + '/' + mNgayKhoiChieu + '/' + ngayKhoiChieu.getFullYear();
 
     const formData = { ...this.formM.value };
     formData.ngayKhoiChieu = ngayKhoiChieuParsed;

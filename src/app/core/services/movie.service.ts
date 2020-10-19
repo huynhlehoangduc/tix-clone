@@ -51,8 +51,6 @@ export class MovieService {
     console.log(formData);
 
     // return this.api.post(url, { ...values, maNhom: 'GP01' });
-    return this.apiService.post(url, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    return this.apiService.post(url, formData);
   }
 }
