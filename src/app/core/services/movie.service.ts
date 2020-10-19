@@ -53,4 +53,10 @@ export class MovieService {
     // return this.api.post(url, { ...values, maNhom: 'GP01' });
     return this.apiService.post(url, formData);
   }
+
+  deleteMovie(id: string){
+    let url = `${this.baseEndpoint}/XoaPhim?MaPhim=${id}`;
+
+    return this.apiService.delete(url, {responseType: 'text'});
+  }
 }

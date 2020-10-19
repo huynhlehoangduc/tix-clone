@@ -24,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SharedModule } from '../core/shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 const route: Routes = [
@@ -60,7 +61,8 @@ const route: Routes = [
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    SharedModule
+    SharedModule,
+    MatSnackBarModule
   ],
   providers: [MatDatepickerModule],
 })

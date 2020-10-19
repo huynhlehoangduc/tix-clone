@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Movie } from '../../core/models/Movie';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MovieService } from '../../core/services/movie.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-movie-dialog',
@@ -10,13 +11,13 @@ import { MovieService } from '../../core/services/movie.service';
   styleUrls: ['./create-movie-dialog.component.scss']
 })
 export class CreateMovieDialogComponent implements OnInit {
-  @Output() added = new EventEmitter();
   formM: FormGroup;
   @ViewChild('imgHinhAnh') imgHinhAnh: ElementRef;
 
   constructor(public dialogRef: MatDialogRef<CreateMovieDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Movie,
-              public movieService: MovieService) {
+              public movieService: MovieService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -72,10 +73,10 @@ export class CreateMovieDialogComponent implements OnInit {
 
     this.movieService.addMovie(formData).subscribe({
       next: (response) => {
-        console.log(response);
+        this.snackBar.open('Thêm phim thành công', null, {duration: 6000});
+        this.dialogRef.close(true);
       },
       complete: () => {
-        this.added.emit();
       },
     });
   }

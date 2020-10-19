@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateMovieDialogComponent } from '../create-movie-dialog/create-movie-dialog.component';
 import { ConfirmDialogComponent } from '../../core/shared/confirm-dialog/confirm-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie',
@@ -23,16 +24,18 @@ export class MovieComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private movieService: MovieService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
+    this.getListMovie();
+  }
+
+  getListMovie() {
     this.movieService.getListMovie().subscribe({
       next: value => {
         this.dataSource = new MatTableDataSource(value);
-
-        console.log(value);
-
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }
@@ -45,8 +48,10 @@ export class MovieComponent implements OnInit {
       data: { tenPhim: '123' }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+    dialogRef.afterClosed().subscribe(added => {
+      if (added) {
+        this.getListMovie();
+      }
     });
 
     /*dialogRef.afterClosed().subscribe(result => {
@@ -56,11 +61,28 @@ export class MovieComponent implements OnInit {
 
   deleteMovie(id): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '650px',
+      width: '400px',
       data: 'Bạn có muốn xóa',
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Delete movie:', result);
+    dialogRef.afterClosed().subscribe(accept => {
+      console.log('Delete movie:', id);
+      if (accept) {
+        this.movieService.deleteMovie(id).subscribe({
+          next: value => {
+            console.log(value);
+            this.snackBar.open('Xóa thành công', '', {
+              duration: 3000
+            });
+            this.getListMovie();
+          },
+          error: err => {
+            console.log(err);
+            this.snackBar.open(typeof err.error === 'string' ? err.error : err.error.text, '', {
+              duration: 3000
+            });
+          }
+        });
+      }
     });
   }
 }
