@@ -84,7 +84,6 @@ export class CreateMovieDialogComponent implements OnInit, AfterViewInit {
 
     if (this.data.maPhim) {
       formData.maPhim = this.data.maPhim;
-      debugger;
       if (formData.hinhAnh) {
         this.movieService.updateMovieWithImg(formData).subscribe({
           next: () => {

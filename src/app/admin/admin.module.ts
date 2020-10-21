@@ -26,6 +26,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { SharedModule } from '../core/shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DatePipe } from '@angular/common';
+import { EditUserDialogComponent } from './user/edit-user-dialog/edit-user-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 
 
 const route: Routes = [
@@ -40,7 +42,7 @@ const route: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, MovieComponent, LichChieuComponent, UserComponent, CreateMovieDialogComponent],
+  declarations: [AdminComponent, MovieComponent, LichChieuComponent, UserComponent, CreateMovieDialogComponent, EditUserDialogComponent],
   imports: [
     RouterModule.forChild(route),
     CommonModule,
@@ -63,7 +65,8 @@ const route: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     SharedModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
   providers: [MatDatepickerModule, DatePipe],
 })

@@ -12,7 +12,8 @@ export class UserService {
   public maNhom = ConstValue.maNhom;
   public baseEndpoint = 'QuanLyNguoiDung';
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+  }
 
   getListUser(tuKhoa: string = null): Observable<User[]> {
     let url = `${this.baseEndpoint}/LayDanhSachNguoiDung?maNhom=${this.maNhom}`;
@@ -22,5 +23,17 @@ export class UserService {
     }
 
     return this.apiService.get(url);
+  }
+
+  create(user: User): Observable<User> {
+    return this.apiService.post(`${this.baseEndpoint}/ThemNguoiDung`, { ...user, maNhom: this.maNhom });
+  }
+
+  update(user: User): Observable<User> {
+    return this.apiService.put(`${this.baseEndpoint}/CapNhatThongTinNguoiDung`, { ...user, maNhom: this.maNhom });
+  }
+
+  delete(taiKhoan: string) {
+    return this.apiService.delete(`${this.baseEndpoint}/XoaNguoiDung?TaiKhoan=${taiKhoan}`);
   }
 }
