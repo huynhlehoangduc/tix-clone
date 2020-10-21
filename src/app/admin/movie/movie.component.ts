@@ -45,7 +45,7 @@ export class MovieComponent implements OnInit {
   createMovie(): void {
     const dialogRef = this.dialog.open(CreateMovieDialogComponent, {
       width: '650px',
-      data: { tenPhim: '123' }
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(added => {
@@ -57,6 +57,19 @@ export class MovieComponent implements OnInit {
     /*dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });*/
+  }
+
+  updateMovie(movie: Movie): void {
+    const dialogRef = this.dialog.open(CreateMovieDialogComponent, {
+      width: '650px',
+      data: movie
+    });
+
+    dialogRef.afterClosed().subscribe(added => {
+      if (added) {
+        this.getListMovie();
+      }
+    });
   }
 
   deleteMovie(id): void {

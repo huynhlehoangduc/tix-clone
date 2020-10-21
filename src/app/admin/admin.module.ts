@@ -25,6 +25,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SharedModule } from '../core/shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DatePipe } from '@angular/common';
 
 
 const route: Routes = [
@@ -64,7 +65,7 @@ const route: Routes = [
     SharedModule,
     MatSnackBarModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, DatePipe],
 })
 export class AdminModule {
 }

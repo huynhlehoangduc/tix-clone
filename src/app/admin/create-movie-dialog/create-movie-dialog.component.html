@@ -22,18 +22,22 @@
         matInput>
     </mat-form-field>
 
-    <mat-form-field class="w-50 p-2" appearance="fill">
+    <mat-form-field appearance="fill"
+                    class="w-50 p-2">
       <mat-label>Ngày khởi chiếu</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="ngayKhoiChieu">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <input [matDatepicker]="picker"
+             formControlName="ngayKhoiChieu"
+             matInput>
+      <mat-datepicker-toggle [for]="picker"
+                             matSuffix></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="w-100 p-2">
       <mat-label>Mô tả</mat-label>
-      <textarea formControlName="moTa"
+      <textarea cols="30"
+                formControlName="moTa"
                 matInput
-                cols="30"
                 rows="4"></textarea>
     </mat-form-field>
 
@@ -65,7 +69,8 @@
             type="submit">Lưu
     </button>
     <button (click)="onNoClick()"
-            mat-button>Hủy
+            mat-button
+            type="button">Hủy
     </button>
   </div>
 </form>
