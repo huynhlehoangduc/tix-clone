@@ -34,6 +34,6 @@ export class UserService {
   }
 
   delete(taiKhoan: string) {
-    return this.apiService.delete(`${this.baseEndpoint}/XoaNguoiDung?TaiKhoan=${taiKhoan}`);
+    return this.apiService.delete(`${this.baseEndpoint}/XoaNguoiDung?TaiKhoan=${taiKhoan}`, {responseType: 'text'});
   }
 }
