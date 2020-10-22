@@ -1,6 +1,7 @@
 <div class="movie-detail-container">
-  <img class="bg-section" src="https://s3img.vcdn.vn/123phim/2020/09/ac-quy-doi-dau-deliver-us-from-evil-c16-15994546882305.jpg"
-       alt="">
+  <img alt=""
+       class="bg-section"
+       src="https://s3img.vcdn.vn/123phim/2020/09/ac-quy-doi-dau-deliver-us-from-evil-c16-15994546882305.jpg">
   <app-loading [loading]="!this.isLoaded"></app-loading>
 
   <div *ngIf="this.isLoaded && movie"
@@ -29,6 +30,49 @@
         </div>
       </div>
       <div class="col-3"></div>
+    </div>
+    <div class="max-width-940 cum-rap-theo-phim rounded d-flex">
+      <div class="cum-raps">
+        <ng-container *ngFor="let rap of danhSachRap; let i = index">
+          <div (click)="clickCumRam(i)"
+               [class.active]="i == activeCumRapIndex"
+               class="p-3 cum-rap">
+            <img alt="{{ rap.biDanh }}"
+                 class="cum-rap-logo"
+                 src="{{ rap.logo }}">
+            <span class="pl-3 ten-cum-rap">{{ rap.tenHeThongRap }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="phong-ve border-left">
+        <div class="DayOfWeeks w-100 d-flex">
+          <div *ngFor="let date of danhSachNgay"
+               class="DayOfWeek" (click)="activeDate = date" [class.active]="activeDate.toLocaleDateString() == date.toLocaleDateString()">
+            <p class="day">{{ date | date: "EEEE":"": "vi-VN" }}</p>
+            <p class="date">{{ date | date: "dd"}}</p>
+          </div>
+        </div>
+        <ng-container *ngFor="let cumRapChieu of activeCumRapChieu.cumRapChieu">
+          <div class="cum-rap-chieu w-100 mb-3">
+            <div class="w-100 py-3 px-4 mx-2">
+              <img *ngIf="cumRapChieu.hinhAnh"
+                   alt="{{cumRapChieu.tenCumRap}}"
+                   class="anh-rap"
+                   src="{{ cumRapChieu.hinhAnh }}">
+              <span class="ten-rap">{{cumRapChieu.tenCumRap}}</span>
+            </div>
+            <div class="w-100 px-4">
+              <ng-container *ngFor="let lichChieuPhim of cumRapChieu.lichChieuPhim">
+                <ng-container *ngIf="lichChieuPhim.ngayChieuGioChieu.toLocaleDateString() == activeDate.toLocaleDateString()">
+                <span class="badge badge-light py-2 px-4 m-2 rounded border">
+                  <span class="gio-chieu">{{ lichChieuPhim.ngayChieuGioChieu | date: "HH:mm"}}</span>
+                </span>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>
