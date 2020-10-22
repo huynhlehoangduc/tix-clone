@@ -98,6 +98,7 @@ export class CreateMovieDialogComponent implements OnInit, AfterViewInit {
           }
         });
       } else {
+        formData.hinhAnh = this.data.hinhAnh;
         this.movieService.updateMovie(formData).subscribe({
           next: () => {
             this.snackBar.open('Cập nhật phim thành công', null, { duration: 6000 });
