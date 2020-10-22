@@ -33,7 +33,11 @@ export class UserService {
     return this.apiService.put(`${this.baseEndpoint}/CapNhatThongTinNguoiDung`, { ...user, maNhom: this.maNhom });
   }
 
-  delete(taiKhoan: string) {
-    return this.apiService.delete(`${this.baseEndpoint}/XoaNguoiDung?TaiKhoan=${taiKhoan}`, {responseType: 'text'});
+  delete(taiKhoan: string): Observable<string> {
+    return this.apiService.delete(`${this.baseEndpoint}/XoaNguoiDung?TaiKhoan=${taiKhoan}`, { responseType: 'text' });
+  }
+
+  search(tuKhoa: string): Observable<User[]> {
+    return this.apiService.get(`${this.baseEndpoint}/TimKiemNguoiDung?tuKhoa=${tuKhoa}&maNhom=${this.maNhom}`);
   }
 }

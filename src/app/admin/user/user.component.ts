@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditUserDialogComponent } from './edit-user-dialog/edit-user-dialog.component';
 import { ConfirmDialogComponent } from '../../core/shared/confirm-dialog/confirm-dialog.component';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user',
@@ -18,6 +20,10 @@ import { ConfirmDialogComponent } from '../../core/shared/confirm-dialog/confirm
 export class UserComponent implements OnInit {
   dataSource: MatTableDataSource<User>;
   displayedColumns = ['taiKhoan', 'hoTen', 'email', 'soDt', 'maLoaiNguoiDung', 'action'];
+  search: string;
+  searchChanged = new Subject<string>();
+  /*searchResult$: Observable<User[]>;*/
+  searchResult$: Subject<User[]>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -29,19 +35,36 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.getList();
-  }
+    this.searchChanged
+      .pipe(
+        debounceTime(300))
+      .subscribe(() => {
+        this.getList();
+      });
 
-  getList() {
-    this.userService.getListUser().subscribe({
-      next: value => {
-        this.dataSource = new MatTableDataSource(value);
-
-        console.log(value);
-
+    this.searchResult$ = new Subject<User[]>();
+    this.searchResult$.subscribe({
+      next: res => {
+        this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+      },
+      complete: () => {
+        console.log(123);
       }
     });
+  }
+
+  getList(): void {
+    if (!this.search) {
+      this.userService.getListUser().subscribe(res => {
+        this.searchResult$.next(res);
+      });
+    } else {
+      this.userService.search(this.search).subscribe(res => {
+        this.searchResult$.next(res);
+      });
+    }
   }
 
   openEditDialog(user = {}): void {
@@ -63,21 +86,22 @@ export class UserComponent implements OnInit {
       data: 'Bạn có muốn xóa',
     });
     dialogRef.afterClosed().subscribe(accept => {
-      debugger;
       if (accept) {
         this.userService.delete(taiKhoan).subscribe({
           next: value => {
-            debugger;
             this.snackBar.open('Xóa thành công', '', { duration: 3000 });
             this.getList();
           },
           error: err => {
-            debugger;
             console.log(err);
             this.snackBar.open(typeof err.error === 'string' ? err.error : err.error.text, '', { duration: 3000 });
           }
         });
       }
     });
+  }
+
+  changed(event): void {
+    this.searchChanged.next();
   }
 }
