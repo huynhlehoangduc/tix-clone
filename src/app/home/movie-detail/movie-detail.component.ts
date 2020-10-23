@@ -81,7 +81,6 @@ export class MovieDetailComponent implements OnInit {
   setActiveCumRapChieu(index): void {
     this.heThongRapChieu.forEach(item => {
       if (item.maHeThongRap === this.danhSachRap[index].maHeThongRap) {
-        debugger;
         item.cumRapChieu.forEach((cumRap, indexcumRap) => {
           cumRap.lichChieuPhim.forEach((lichChieu, indexlichChieu) => {
             item.cumRapChieu[indexcumRap].lichChieuPhim[indexlichChieu].ngayChieuGioChieu = new Date(lichChieu.ngayChieuGioChieu);

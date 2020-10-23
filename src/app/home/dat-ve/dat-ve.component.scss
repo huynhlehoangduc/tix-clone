@@ -1,0 +1,42 @@
+.chi-tiet-cum-rap {
+  padding: 30px 100px;
+
+  .left {
+    .tenCumRap {
+      font-size: 16px;
+    }
+
+    .ngayChieu {
+      line-height: 5px;
+      font-size: 14px;
+      color: #9b9b9b;
+    }
+  }
+
+  .logo {
+    width: 100%;
+  }
+}
+.thong-tin-dat-ve {
+  .row-thong-tin {
+    border-bottom: 1px dashed #e9e9e9;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  .tong-tien {
+    height: 80px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 36px;
+    color: #44c020!important;
+    line-height: 80px;
+  }
+  .filmname {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .ghe-dang-chon {
+    color: #fb4226;
+    font-size: 14px;
+  }
+}

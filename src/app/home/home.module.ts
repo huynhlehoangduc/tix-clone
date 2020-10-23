@@ -13,6 +13,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { LoadingComponent } from '../core/components/loading/loading.component';
 import { DatVeComponent } from './dat-ve/dat-ve.component';
+import { PipesModule } from '../core/pipes/pipes.module';
+import { GheComponent } from './@ghe/ghe.component';
 
 const routes: Routes = [
   {
@@ -39,11 +41,13 @@ const routes: Routes = [
     MovieDetailComponent,
     LoadingComponent,
     DatVeComponent,
+    GheComponent,
   ],
   imports: [
     SlickCarouselModule,
     CommonModule,
     RouterModule.forChild(routes),
+    PipesModule
   ],
   exports: [HomeComponent],
 })

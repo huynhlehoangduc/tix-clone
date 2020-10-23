@@ -26,7 +26,7 @@ export class ApiService {
         console.log('Lỗi Authorization');
         break;
       case 404:
-        console.log('Lỗi 401');
+        console.log('Lỗi 404');
         break;
       default:
         break;

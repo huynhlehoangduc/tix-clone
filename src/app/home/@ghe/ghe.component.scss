@@ -1,0 +1,22 @@
+.ghe {
+  cursor: pointer;
+  font-size: 14px;
+
+  &.thuong {
+    background: #3e515d;
+    color: white;
+  }
+
+  &.vip {
+    background: #f7b500;
+  }
+
+  &.dang-chon {
+    background: #44c020 !important;
+    color: white;
+  }
+
+  &.khong-the-chon {
+    background: rgba(16, 34, 53, .2);
+  }
+}

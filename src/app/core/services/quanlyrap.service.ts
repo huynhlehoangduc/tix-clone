@@ -22,4 +22,8 @@ export class QuanlyrapService {
   layThongTinLichChieuPhim(maPhim: string): Observable<any> {
     return this.apiService.get(`${this.baseEndpoint}/LayThongTinLichChieuPhim?maPhim=${maPhim}`);
   }
+
+  layDanhSachPhongVe(maLichChieu: string): Observable<any> {
+    return this.apiService.get(`QuanLyDatVe/LayDanhSachPhongVe?maLichChieu=${maLichChieu}`);
+  }
 }

@@ -1,0 +1,8 @@
+<span (click)="datGhe()"
+      [ngClass]="{
+        'thuong':ghe.loaiGhe === 'Thuong',
+        'vip':ghe.loaiGhe === 'Vip' ,
+        'dang-chon': dangChon,
+        'khong-the-chon': ghe.daDat
+      }"
+      class="badge ghe p-2 m-1"> {{ ghe.tenGhe }}</span>

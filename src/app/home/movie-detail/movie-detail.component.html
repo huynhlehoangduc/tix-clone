@@ -46,8 +46,10 @@
       </div>
       <div class="phong-ve border-left">
         <div class="DayOfWeeks w-100 d-flex">
-          <div *ngFor="let date of danhSachNgay"
-               class="DayOfWeek" (click)="activeDate = date" [class.active]="activeDate.toLocaleDateString() == date.toLocaleDateString()">
+          <div (click)="activeDate = date"
+               *ngFor="let date of danhSachNgay"
+               [class.active]="activeDate.toLocaleDateString() == date.toLocaleDateString()"
+               class="DayOfWeek">
             <p class="day">{{ date | date: "EEEE":"": "vi-VN" }}</p>
             <p class="date">{{ date | date: "dd"}}</p>
           </div>
@@ -64,9 +66,11 @@
             <div class="w-100 px-4">
               <ng-container *ngFor="let lichChieuPhim of cumRapChieu.lichChieuPhim">
                 <ng-container *ngIf="lichChieuPhim.ngayChieuGioChieu.toLocaleDateString() == activeDate.toLocaleDateString()">
-                <span class="badge badge-light py-2 px-4 m-2 rounded border">
-                  <span class="gio-chieu">{{ lichChieuPhim.ngayChieuGioChieu | date: "HH:mm"}}</span>
-                </span>
+                  <a routerLink="/dat-ve/{{ lichChieuPhim.maLichChieu }}">
+                    <span class="badge badge-light py-2 px-4 m-2 rounded border">
+                      <span class="gio-chieu">{{ lichChieuPhim.ngayChieuGioChieu | date: "HH:mm"}}</span>
+                    </span>
+                  </a>
                 </ng-container>
               </ng-container>
             </div>
