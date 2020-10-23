@@ -12,6 +12,7 @@ import { MovieInfoComponent } from './@movie-info/movie-info.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { LoadingComponent } from '../core/components/loading/loading.component';
+import { DatVeComponent } from './dat-ve/dat-ve.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomePageComponent },
       { path: 'movie-detail/:id', component: MovieDetailComponent },
+      { path: 'dat-ve/:ma_lich_chieu', component: DatVeComponent },
     ],
   },
 ];
@@ -36,6 +38,7 @@ const routes: Routes = [
     HomePageComponent,
     MovieDetailComponent,
     LoadingComponent,
+    DatVeComponent,
   ],
   imports: [
     SlickCarouselModule,
