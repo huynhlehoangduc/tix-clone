@@ -11,12 +11,14 @@ import { Ghe } from '../../core/models/Ghe';
 })
 export class DatVeComponent implements OnInit {
   maLichChieu: string;
-  danhSachGhe: Ghe[];
+  danhSachGhe: any = [];
   thongTinPhim: ThongTinLichChieu;
   tongTien: number = 0;
 
   gheDangChon: Ghe[] = [];
   gheDangChonString: string = '';
+
+  disableDatVe: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute,
               private quanLyRap: QuanlyrapService) {
@@ -27,7 +29,19 @@ export class DatVeComponent implements OnInit {
       this.maLichChieu = params.ma_lich_chieu;
       this.quanLyRap.layDanhSachPhongVe(this.maLichChieu).subscribe(res => {
         this.thongTinPhim = res.thongTinPhim;
-        this.danhSachGhe = res.danhSachGhe;
+        res.danhSachGhe.sort((a: Ghe, b: Ghe) => {
+          if (a.loaiGhe < b.loaiGhe) {
+            return -1;
+          }
+          if (a.loaiGhe > b.loaiGhe) {
+            return 1;
+          }
+          return 0;
+        });
+        for (let i = 0; i < res.danhSachGhe.length; i += 14) {
+          this.danhSachGhe.push(res.danhSachGhe.slice(i, i + 14));
+        }
+        console.log(this.danhSachGhe);
         console.log(this.thongTinPhim);
       });
     });
@@ -43,7 +57,7 @@ export class DatVeComponent implements OnInit {
     }
 
     this.gheDangChonString = this.gheDangChon.map(ghe => ghe.tenGhe).join(', ');
-
+    this.disableDatVe = !this.gheDangChon.length;
     this.tinhTongTien();
   }
 
@@ -54,4 +68,7 @@ export class DatVeComponent implements OnInit {
     }, 0);
   }
 
+  datVe(): void {
+    alert('dat ve');
+  }
 }

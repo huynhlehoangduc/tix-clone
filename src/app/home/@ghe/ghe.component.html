@@ -1,8 +1,9 @@
 <span (click)="datGhe()"
+      [class.ml-4]="(index == 4 || index == 10) && !lastHangGhe"
       [ngClass]="{
         'thuong':ghe.loaiGhe === 'Thuong',
         'vip':ghe.loaiGhe === 'Vip' ,
         'dang-chon': dangChon,
         'khong-the-chon': ghe.daDat
       }"
-      class="badge ghe p-2 m-1"> {{ ghe.tenGhe }}</span>
+      class="badge ghe p-2 m-1">{{index + 1}}</span>

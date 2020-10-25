@@ -8,6 +8,8 @@ import { Ghe } from '../../core/models/Ghe';
 })
 export class GheComponent implements OnInit {
   @Input() ghe: Ghe;
+  @Input() index: number;
+  @Input() lastHangGhe: boolean;
   @Output() chonGhe = new EventEmitter();
 
   dangChon: boolean = false;

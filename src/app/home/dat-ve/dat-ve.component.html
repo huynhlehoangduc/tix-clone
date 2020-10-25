@@ -14,10 +14,19 @@
         <img class="logo"
              src="https://tix.vn/app/assets/img/icons/screen.png">
       </div>
-      <div class="danh-sach-ghe w-50 mx-auto text-center">
-        <app-ghe (chonGhe)="chonGhe($event, ghe)"
-                 *ngFor="let ghe of danhSachGhe"
-                 [ghe]="ghe"></app-ghe>
+      <div class="danh-sach-ghe mx-auto">
+        <div *ngFor="let hangGhe of danhSachGhe; let indexHangGhe = index">
+          <span class="font-weight-bold"
+                style="width: 40px; display: inline-block; font-size: 500">{{ indexHangGhe | indexChar }}</span>
+          <div class="text-center float-left"
+               style="width: calc(100% - 40px);">
+            <app-ghe (chonGhe)="chonGhe($event, ghe)"
+                     *ngFor="let ghe of hangGhe; let i = index"
+                     [ghe]="ghe"
+                     [index]="i"
+                     [lastHangGhe]="indexHangGhe == danhSachGhe.length - 1"></app-ghe>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-sm12 col-md-3 thong-tin-dat-ve"
@@ -25,17 +34,26 @@
       <div class="row-thong-tin">
         <p class="tong-tien">{{ tongTien | currency:'đ':'symbol':'1.0-0': 'vi-VN' }}</p>
       </div>
-      <div class="row-thong-tin px-4" *ngIf="thongTinPhim">
-        <p class="filmname py-2 mb-0"><span class="badge-success badge py-1 px-3 mr-2">p</span>{{ thongTinPhim.tenPhim }}</p>
+      <div *ngIf="thongTinPhim"
+           class="row-thong-tin px-4">
+        <p class="filmname py-2 mb-0">
+          <span class="badge-success badge py-1 px-3 mr-2">p</span>{{ thongTinPhim.tenPhim }}</p>
         <p class="py-0 mb-0">{{ thongTinPhim.tenCumRap }}</p>
-        <p class="py-0 mb-0">{{ thongTinPhim.ngayChieu | customDate }}: {{ thongTinPhim.gioChieu }} - {{ thongTinPhim.tenRap }}</p>
+        <p class="py-0 mb-0">{{ thongTinPhim.ngayChieu | customDate }}: {{ thongTinPhim.gioChieu }}
+          - {{ thongTinPhim.tenRap }}</p>
       </div>
       <div class="row-thong-tin px-4">
         <div class="row">
           <div class="col-7 ghe-dang-chon">Ghế {{ gheDangChonString }}</div>
-          <div class="col-5"><p class="text-right mb-0" style="color: #44c020">{{ tongTien | currency:'đ':'symbol':'1.0-0': 'vi-VN' }}</p></div>
+          <div class="col-5"><p class="text-right mb-0"
+                                style="color: #44c020">{{ tongTien | currency:'đ':'symbol':'1.0-0': 'vi-VN' }}</p></div>
         </div>
       </div>
+      <button (click)="datVe()"
+              [class.disabled]="disableDatVe"
+              [disabled]="disableDatVe"
+              class="dat-ve">Đặt vé
+      </button>
     </div>
   </div>
 </div>
