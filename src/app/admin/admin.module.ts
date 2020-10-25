@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MovieComponent } from './movie/movie.component';
@@ -25,9 +25,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SharedModule } from '../core/shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { DatePipe } from '@angular/common';
 import { EditUserDialogComponent } from './user/edit-user-dialog/edit-user-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
+import { TaoLichChieuDialogComponent } from './tao-lich-chieu-dialog/tao-lich-chieu-dialog.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 const route: Routes = [
@@ -42,7 +43,7 @@ const route: Routes = [
 ];
 
 @NgModule({
-  declarations: [AdminComponent, MovieComponent, LichChieuComponent, UserComponent, CreateMovieDialogComponent, EditUserDialogComponent],
+  declarations: [AdminComponent, MovieComponent, LichChieuComponent, UserComponent, CreateMovieDialogComponent, EditUserDialogComponent, TaoLichChieuDialogComponent],
   imports: [
     RouterModule.forChild(route),
     CommonModule,
@@ -66,7 +67,9 @@ const route: Routes = [
     MatNativeDateModule,
     SharedModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   providers: [MatDatepickerModule, DatePipe],
 })

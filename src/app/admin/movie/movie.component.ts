@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateMovieDialogComponent } from '../create-movie-dialog/create-movie-dialog.component';
 import { ConfirmDialogComponent } from '../../core/shared/confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TaoLichChieuDialogComponent } from '../tao-lich-chieu-dialog/tao-lich-chieu-dialog.component';
 
 @Component({
   selector: 'app-movie',
@@ -96,6 +97,16 @@ export class MovieComponent implements OnInit {
           }
         });
       }
+    });
+  }
+
+  taoLichChieU(movie: Movie) {
+    const dialogRef = this.dialog.open(TaoLichChieuDialogComponent, {
+      width: '650px',
+      data: movie
+    });
+
+    dialogRef.afterClosed().subscribe(added => {
     });
   }
 }

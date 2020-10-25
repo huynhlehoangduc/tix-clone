@@ -1,0 +1,85 @@
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Movie } from '../../core/models/Movie';
+import { QuanlyrapService } from '../../core/services/quanlyrap.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-tao-lich-chieu-dialog',
+  templateUrl: './tao-lich-chieu-dialog.component.html',
+  styleUrls: ['./tao-lich-chieu-dialog.component.scss']
+})
+export class TaoLichChieuDialogComponent implements OnInit {
+  formM: FormGroup;
+  thongTinHeThongRap: any = [];
+  cumRaps: any = [];
+  raps: any = [];
+
+  constructor(@Inject(MAT_DIALOG_DATA) public movie: Movie,
+              private quanLyRapService: QuanlyrapService,
+              public dialogRef: MatDialogRef<TaoLichChieuDialogComponent>,
+              private snackBar: MatSnackBar) {
+  }
+
+  ngOnInit(): void {
+    this.formM = new FormGroup({
+      heThongRap: new FormControl('', Validators.required),
+      cumRap: new FormControl('', Validators.required),
+      maRap: new FormControl('', Validators.required),
+      ngayChieuGioChieu: new FormControl('', Validators.required),
+      giaVe: new FormControl('', [Validators.required, Validators.min(75000), Validators.max(200000)]),
+    });
+    this.quanLyRapService.layThongTinHeThongRap().subscribe(res => {
+      this.thongTinHeThongRap = res;
+    });
+  }
+
+  onChangeHeThongRap(event): void {
+    const { value } = event;
+    this.loadCumRap(value);
+  }
+
+  onChangeCumRap(event): void {
+    const { value } = event;
+    this.loadRap(value);
+  }
+
+  loadCumRap(maHeThongRap) {
+    this.quanLyRapService.layThongTinCumRapTheoHeThong(maHeThongRap).subscribe(res => {
+      this.cumRaps = res;
+      console.log(res);
+    });
+  }
+
+  loadRap(maCumRap): void {
+    this.raps = this.cumRaps.find((cumRap) => {
+      return cumRap.maCumRap == maCumRap;
+    }).danhSachRap;
+  }
+
+  onSubmit(): void {
+    this.formM.markAllAsTouched();
+
+    if (this.formM.invalid) {
+      return;
+    }
+
+    const formData = { ...this.formM.value };
+    formData.maPhim = this.movie.maPhim;
+    formData.ngayChieuGioChieu = formData.ngayChieuGioChieu.toLocaleString('vi-VN', { hour12: false }).split(', ').reverse().join(' ');
+
+    this.quanLyRapService.taoLichChieu(formData).subscribe({
+      next: () => {
+        this.snackBar.open('Thêm lịch thành công', null, { duration: 6000 });
+        this.dialogRef.close(true);
+      },
+      error: err => {
+        console.log(err);
+        this.snackBar.open(typeof err.error === 'string' ? err.error : err.error.text, '', {
+          duration: 3000
+        });
+      }
+    });
+  }
+}

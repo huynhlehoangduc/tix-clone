@@ -1,0 +1,70 @@
+<h1 class="text-center"
+    mat-dialog-title>Thông tin lịch chiếu phim của phim {{ movie.tenPhim }}</h1>
+<hr>
+
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="formM"
+      novalidate>
+  <div mat-dialog-content>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Hệ thống rạp</mat-label>
+      <mat-select (selectionChange)="onChangeHeThongRap($event)"
+                  formControlName="heThongRap">
+        <mat-option *ngFor="let heThongRap of thongTinHeThongRap"
+                    [value]="heThongRap.maHeThongRap">
+          {{ heThongRap.tenHeThongRap }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Ngày giờ khởi chiếu</mat-label>
+      <input [owlDateTimeTrigger]="dt1"
+             [owlDateTime]="dt1"
+             formControlName="ngayChieuGioChieu"
+             matInput
+             placeholder="Date Time">
+      <owl-date-time #dt1></owl-date-time>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Cụm rạp</mat-label>
+      <mat-select (selectionChange)="onChangeCumRap($event)"
+                  formControlName="cumRap">
+        <mat-option *ngFor="let cumRap of cumRaps"
+                    [value]="cumRap.maCumRap">
+          {{ cumRap.tenCumRap }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Giá vé</mat-label>
+      <input formControlName="giaVe"
+             matInput
+             type="number"
+             value="">
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Rạp</mat-label>
+      <mat-select formControlName="maRap">
+        <mat-option *ngFor="let rap of raps"
+                    [value]="rap.maRap">
+          {{ rap.tenRap }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div align="end"
+       mat-dialog-actions>
+    <button color="primary"
+            mat-raised-button
+            type="submit">Lưu
+    </button>
+    <button mat-button
+            mat-dialog-close
+            type="button">Hủy
+    </button>
+  </div>
+</form>

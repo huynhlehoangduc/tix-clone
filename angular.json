@@ -32,6 +32,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
+              "node_modules/ng-pick-datetime/assets/style/picker.min.css",
               "src/styles.scss"
             ],
             "scripts": [

@@ -57,15 +57,22 @@
       <td *matCellDef="let element"
           class="text-center"
           mat-cell>
-        <button color="primary"
+        <button (click)="taoLichChieU(element)"
+                color="accent"
+                mat-raised-button
+                title="Tạo lịch chiếu">
+          Tạo lịch chiếu
+        </button>
+        <button (click)="updateMovie(element)"
+                color="primary"
                 mat-icon-button
-                title="Chỉnh sửa"
-                (click)="updateMovie(element)">
+                title="Chỉnh sửa">
           <mat-icon>edit</mat-icon>
         </button>
-        <button color="warn"
+        <button (click)="deleteMovie(element.maPhim)"
+                color="warn"
                 mat-icon-button
-                title="Xóa" (click)="deleteMovie(element.maPhim)">
+                title="Xóa">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

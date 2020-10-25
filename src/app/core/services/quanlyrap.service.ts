@@ -19,6 +19,10 @@ export class QuanlyrapService {
     return this.apiService.get(`${this.baseEndpoint}/LayThongTinHeThongRap`);
   }
 
+  layThongTinCumRapTheoHeThong(maHeThongRap): Observable<any> {
+    return this.apiService.get(`${this.baseEndpoint}/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`);
+  }
+
   layThongTinLichChieuPhim(maPhim: string): Observable<any> {
     return this.apiService.get(`${this.baseEndpoint}/LayThongTinLichChieuPhim?maPhim=${maPhim}`);
   }
@@ -30,4 +34,10 @@ export class QuanlyrapService {
   datVe(data): Observable<any> {
     return this.apiService.post(`QuanLyDatVe/DatVe`, data, { responseType: 'text' });
   }
+
+  taoLichChieu(data): Observable<any> {
+    return this.apiService.post(`QuanLyDatVe/TaoLichChieu`, data, { responseType: 'text' });
+  }
+
+
 }
