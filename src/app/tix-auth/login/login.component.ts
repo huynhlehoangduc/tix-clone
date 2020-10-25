@@ -42,6 +42,12 @@ export class LoginComponent implements OnInit {
       error: (err) => console.log(err),
       complete: () => {
         console.log('Đăng nhập thành công');
+        const previousRoute = localStorage.getItem('previousRoute');
+        if (previousRoute) {
+          this.router.navigate([previousRoute]);
+          localStorage.removeItem('previousRoute');
+          return;
+        }
         this.router.navigate(['/']);
       },
     });

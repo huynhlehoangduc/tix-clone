@@ -16,6 +16,7 @@ import { DatVeComponent } from './dat-ve/dat-ve.component';
 import { PipesModule } from '../core/pipes/pipes.module';
 import { GheComponent } from './@ghe/ghe.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DatVeGuard } from '../core/guards/dat-ve.guard';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomePageComponent },
       { path: 'movie-detail/:id', component: MovieDetailComponent },
-      { path: 'dat-ve/:ma_lich_chieu', component: DatVeComponent },
+      { path: 'dat-ve/:ma_lich_chieu', component: DatVeComponent, canActivate: [DatVeGuard] },
     ],
   },
 ];
