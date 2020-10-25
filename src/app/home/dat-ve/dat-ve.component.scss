@@ -17,11 +17,14 @@
     width: 100%;
   }
 }
+
 .danh-sach-ghe {
   width: 550px;
 }
+
 .thong-tin-dat-ve {
   position: relative;
+
   .dat-ve {
     position: absolute;
     bottom: 0;
@@ -32,34 +35,48 @@
     cursor: pointer;
     font-size: 24px;
     text-align: center;
-    color: #e9e9e9!important;
-    background-image: linear-gradient(223deg,#b4ec51 0,#429321 100%);
+    color: #e9e9e9 !important;
+    background-image: linear-gradient(223deg, #b4ec51 0, #429321 100%);
     border: 0;
+
     &.disabled {
       background-color: #afafaf;
       background-image: none;
       cursor: initial;
     }
   }
+
   .row-thong-tin {
     border-bottom: 1px dashed #e9e9e9;
     padding-bottom: 10px;
     padding-top: 10px;
   }
+
   .tong-tien {
     height: 80px;
     margin-bottom: 15px;
     text-align: center;
     font-size: 36px;
-    color: #44c020!important;
+    color: #44c020 !important;
     line-height: 80px;
   }
+
   .filmname {
     font-size: 16px;
     font-weight: bold;
   }
+
   .ghe-dang-chon {
     color: #fb4226;
     font-size: 14px;
+  }
+}
+
+.mo-ta-ghe {
+  .ghe {
+    width: 15px;
+    height: 15px;
+    color: transparent;
+    display: inline-block;
   }
 }

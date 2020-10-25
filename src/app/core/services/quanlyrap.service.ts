@@ -26,4 +26,8 @@ export class QuanlyrapService {
   layDanhSachPhongVe(maLichChieu: string): Observable<any> {
     return this.apiService.get(`QuanLyDatVe/LayDanhSachPhongVe?maLichChieu=${maLichChieu}`);
   }
+
+  datVe(data): Observable<any> {
+    return this.apiService.post(`QuanLyDatVe/DatVe`, data, { responseType: 'text' });
+  }
 }

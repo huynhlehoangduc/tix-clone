@@ -24,5 +24,12 @@
 
   &.khong-the-chon {
     background: rgba(16, 34, 53, .2);
+    cursor: not-allowed;
   }
+
+  &.da-dat {
+    background: rgba(16, 34, 53, .5);
+    cursor: not-allowed;
+  }
+
 }

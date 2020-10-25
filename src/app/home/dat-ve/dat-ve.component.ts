@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QuanlyrapService } from '../../core/services/quanlyrap.service';
 import { ThongTinLichChieu } from '../../core/models/ThongTinLichChieu';
 import { Ghe } from '../../core/models/Ghe';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dat-ve',
@@ -21,7 +22,8 @@ export class DatVeComponent implements OnInit {
   disableDatVe: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private quanLyRap: QuanlyrapService) {
+              private quanLyRap: QuanlyrapService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -69,6 +71,38 @@ export class DatVeComponent implements OnInit {
   }
 
   datVe(): void {
-    alert('dat ve');
+    const confirmDatve = confirm('Xác nhận đặt vé');
+    if (!confirmDatve) {
+      return;
+    }
+
+    let params = {
+      maLichChieu: this.maLichChieu,
+      danhSachVe: this.gheDangChon,
+      taiKhoanNguoiDung: null
+    };
+
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    params.taiKhoanNguoiDung = currentUser.taiKhoan;
+
+    this.quanLyRap.datVe(params).subscribe({
+      next: value => {
+        console.log(value);
+        this.snackBar.open('Đặt vé thành công', '', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+        location.reload();
+      },
+      error: err => {
+        console.log(err);
+        this.snackBar.open(typeof err.error === 'string' ? err.error : err.error.text, '', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+      }
+    });
   }
 }

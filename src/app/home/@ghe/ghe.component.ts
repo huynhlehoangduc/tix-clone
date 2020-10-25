@@ -13,17 +13,22 @@ export class GheComponent implements OnInit {
   @Output() chonGhe = new EventEmitter();
 
   dangChon: boolean = false;
+  taiKhoan: string = '';
 
   constructor() {
   }
 
   ngOnInit(): void {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.taiKhoan = currentUser.taiKhoan;
   }
 
-  datGhe(): void {
+  datGhe(ghe): void {
+    if (ghe.daDat) {
+      return;
+    }
     this.dangChon = !this.dangChon;
     this.chonGhe.emit(this.dangChon);
-
   }
 
 }

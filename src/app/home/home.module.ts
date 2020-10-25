@@ -15,6 +15,7 @@ import { LoadingComponent } from '../core/components/loading/loading.component';
 import { DatVeComponent } from './dat-ve/dat-ve.component';
 import { PipesModule } from '../core/pipes/pipes.module';
 import { GheComponent } from './@ghe/ghe.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
   {
@@ -47,7 +48,8 @@ const routes: Routes = [
     SlickCarouselModule,
     CommonModule,
     RouterModule.forChild(routes),
-    PipesModule
+    PipesModule,
+    MatSnackBarModule
   ],
   exports: [HomeComponent],
 })

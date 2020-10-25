@@ -16,7 +16,7 @@
       </div>
       <div class="danh-sach-ghe mx-auto">
         <div *ngFor="let hangGhe of danhSachGhe; let indexHangGhe = index">
-          <span class="font-weight-bold"
+          <span class="float-left"
                 style="width: 40px; display: inline-block; font-size: 500">{{ indexHangGhe | indexChar }}</span>
           <div class="text-center float-left"
                style="width: calc(100% - 40px);">
@@ -26,6 +26,29 @@
                      [index]="i"
                      [lastHangGhe]="indexHangGhe == danhSachGhe.length - 1"></app-ghe>
           </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="d-flex justify-content-center mt-4">
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: #3e515d;">.</span></p>
+          <p class="text-center">Ghế thường</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: #f7b500;">.</span></p>
+          <p class="text-center">Ghế vip</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: #44c020;">.</span></p>
+          <p class="text-center">Ghế đang chọn</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: rgba(16, 34, 53, .2);">.</span></p>
+          <p class="text-center">Ghế đã có người chọn</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: rgba(16, 34, 53, .5);">.</span></p>
+          <p class="text-center">Ghế không thể chọn</p>
         </div>
       </div>
     </div>
