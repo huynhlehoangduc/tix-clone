@@ -17,6 +17,7 @@ import { PipesModule } from '../core/pipes/pipes.module';
 import { GheComponent } from './@ghe/ghe.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DatVeGuard } from '../core/guards/dat-ve.guard';
+import { ThongTinCaNhanComponent } from './thong-tin-ca-nhan/thong-tin-ca-nhan.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: '', component: HomePageComponent },
       { path: 'movie-detail/:id', component: MovieDetailComponent },
       { path: 'dat-ve/:ma_lich_chieu', component: DatVeComponent, canActivate: [DatVeGuard] },
+      { path: 'thong-tin-ca-nhan', component: ThongTinCaNhanComponent, canActivate: [DatVeGuard] },
     ],
   },
 ];
@@ -44,6 +46,7 @@ const routes: Routes = [
     LoadingComponent,
     DatVeComponent,
     GheComponent,
+    ThongTinCaNhanComponent,
   ],
   imports: [
     SlickCarouselModule,

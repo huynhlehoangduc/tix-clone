@@ -13,7 +13,6 @@ export class DatVeGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let user = localStorage.getItem('currentUser');
-    debugger;
     if (!user) {
       localStorage.setItem('previousRoute', state.url);
       this.router.navigate(['/login']);

@@ -40,4 +40,9 @@ export class UserService {
   search(tuKhoa: string): Observable<User[]> {
     return this.apiService.get(`${this.baseEndpoint}/TimKiemNguoiDung?tuKhoa=${tuKhoa}&maNhom=${this.maNhom}`);
   }
+
+  layThongTinTaiKhoan(): Observable<any> {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return this.apiService.post(`${this.baseEndpoint}/ThongTinTaiKhoan`, {taiKhoan: currentUser.taiKhoan});
+  }
 }

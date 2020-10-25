@@ -1,0 +1,60 @@
+<div class="container p-5">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active"
+         data-toggle="tab"
+         href="#home">Thông tin cá nhân</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"
+         data-toggle="tab"
+         href="#menu1">Lịch sử đặt vé</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane container active"
+         id="home">
+      <table class="table">
+        <tr>
+          <td class="w-20">Họ tên</td>
+          <td class="w-30">{{currentUser.hoTen}}</td>
+        </tr>
+        <tr>
+          <td class="w-20">Email</td>
+          <td class="w-30">{{currentUser.email}}</td>
+        </tr>
+        <tr>
+          <td class="w-20">Số điện thoại</td>
+          <td class="w-30">{{currentUser.soDT}}</td>
+        </tr>
+        <tr>
+          <td class="w-20">Tài khoản</td>
+          <td class="w-30">{{currentUser.taiKhoan}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="tab-pane container fade"
+         id="menu1">
+      <table class="table">
+        <tr>
+          <th>Tên phim</th>
+          <th>Tên hệ thống rạp</th>
+          <th>Tên rạp</th>
+          <th>Ghế</th>
+          <th>Ngày đặt</th>
+        </tr>
+        <ng-container *ngIf="thongTinTaiKhoan">
+          <ng-container *ngFor="let thongTinVe of thongTinTaiKhoan.thongTinDatVe" >
+            <tr *ngFor="let thongTinGhe of thongTinVe.danhSachGhe">
+              <td>{{ thongTinVe.tenPhim }}</td>
+              <td>{{ thongTinGhe.tenHeThongRap }}</td>
+              <td>{{ thongTinGhe.tenRap }}</td>
+              <td>{{ thongTinGhe.tenGhe }}</td>
+              <td>{{ thongTinVe.ngayDat | date: "dd-MM-yyyy HH:mm"}}</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+</div>

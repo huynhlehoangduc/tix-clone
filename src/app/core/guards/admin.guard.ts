@@ -20,6 +20,7 @@ export class AdminGuard implements CanActivate {
     if (user) {
       const { maLoaiNguoiDung } = JSON.parse(user);
       if (maLoaiNguoiDung === 'QuanTri') {
+        localStorage.setItem('previousRoute', state.url);
         return true;
       }
     }

@@ -19,7 +19,7 @@ import { debounceTime } from 'rxjs/operators';
 
 export class UserComponent implements OnInit {
   dataSource: MatTableDataSource<User>;
-  displayedColumns = ['taiKhoan', 'hoTen', 'email', 'soDt', 'maLoaiNguoiDung', 'action'];
+  displayedColumns = ['taiKhoan', 'hoTen', 'email', 'soDT', 'maLoaiNguoiDung', 'action'];
   search: string;
   searchChanged = new Subject<string>();
   /*searchResult$: Observable<User[]>;*/

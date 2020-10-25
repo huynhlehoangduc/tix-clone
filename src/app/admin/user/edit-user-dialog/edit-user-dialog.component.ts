@@ -28,7 +28,7 @@ export class EditUserDialogComponent implements OnInit {
       taiKhoan: new FormControl(this.data.taiKhoan, Validators.required),
       matKhau: new FormControl(this.data.matKhau, [Validators.required, Validators.minLength(6)]),
       hoTen: new FormControl(this.data.hoTen, Validators.required),
-      soDt: new FormControl(this.data.soDt, Validators.required),
+      soDT: new FormControl(this.data.soDT, Validators.required),
       maLoaiNguoiDung: new FormControl(this.data.maLoaiNguoiDung, Validators.required),
       email: new FormControl(this.data.email, [Validators.required, Validators.email]),
     });

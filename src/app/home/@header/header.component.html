@@ -58,7 +58,7 @@
         />
 
         <span *ngIf="currentUser!=null ; else dangNhapSpan"
-              class="register-span mr-3">{{ currentUser.hoTen }}</span>
+              class="register-span mr-3">Chào, {{ currentUser.hoTen }}</span>
         <ng-template #dangNhapSpan>
           <span class="register-span mr-3 cursor-pointer"
                 routerLink="/login">Đăng nhập</span>
