@@ -35,4 +35,9 @@ export class AuthService {
         window.localStorage.setItem('currentUser', JSON.stringify(result));
       }));
   }
+
+  // Đăng xuất
+  logout(): void{
+    localStorage.setItem('currentUser', null);
+  }
 }

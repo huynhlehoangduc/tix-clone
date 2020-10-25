@@ -14,4 +14,9 @@ export class HeaderComponent implements OnInit {
   console.log(this.currentUser);
   }
 
+  dangXuat(): void {
+    localStorage.removeItem('currentUser');
+    location.reload();
+  }
+
 }

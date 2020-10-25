@@ -60,29 +60,11 @@
         <span *ngIf="currentUser!=null ; else dangNhapSpan"
               class="register-span mr-3">{{ currentUser.hoTen }}</span>
         <ng-template #dangNhapSpan>
-          <span class="register-span mr-3"
+          <span class="register-span mr-3 cursor-pointer"
                 routerLink="/login">Đăng nhập</span>
         </ng-template>
-        <div class="dropdown header__location d-flex align-items-center">
-          <button
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="btn dropdown-toggle"
-            data-toggle="dropdown"
-            id="triggerId"
-            type="button"
-          >
-            <i class="fa fa-map-marker-alt mr-1"></i> HCM
-          </button>
-          <div aria-labelledby="triggerId"
-               class="dropdown-menu">
-            <a class="dropdown-item"
-               href="#">Hồ Chí Minh</a>
-            <a class="dropdown-item"
-               href="#">Hà Nội</a>
-            <a class="dropdown-item"
-               href="#">Đà Nắng</a>
-          </div>
+        <div class="header__location d-flex align-items-center cursor-pointer" *ngIf="currentUser" (click)="dangXuat()">
+          Đăng xuất
         </div>
       </div>
     </div>
