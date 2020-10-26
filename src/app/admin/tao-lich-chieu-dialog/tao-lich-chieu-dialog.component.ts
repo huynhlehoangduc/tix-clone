@@ -1,9 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Movie } from '../../core/models/Movie';
 import { QuanlyrapService } from '../../core/services/quanlyrap.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-tao-lich-chieu-dialog',
@@ -15,6 +18,18 @@ export class TaoLichChieuDialogComponent implements OnInit {
   thongTinHeThongRap: any = [];
   cumRaps: any = [];
   raps: any = [];
+  thongTinLichChieu = [];
+  dataSource = new MatTableDataSource([]);
+  displayedColumns = [
+    'maLichChieu',
+    'heThongRap',
+    'cumRap',
+    'ngayChieuGioChieu',
+    'giaVe',
+    'thoiLuong'
+  ];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(@Inject(MAT_DIALOG_DATA) public movie: Movie,
               private quanLyRapService: QuanlyrapService,
@@ -32,6 +47,32 @@ export class TaoLichChieuDialogComponent implements OnInit {
     });
     this.quanLyRapService.layThongTinHeThongRap().subscribe(res => {
       this.thongTinHeThongRap = res;
+    });
+    this.layThongTinLichChieu();
+  }
+
+  layThongTinLichChieu():void {
+    this.quanLyRapService.layThongTinLichChieuPhim(this.movie.maPhim.toString()).subscribe(res => {
+      // this.thongTinLichChieu
+      this.thongTinLichChieu = [];
+      res.heThongRapChieu.forEach((heThongRapChieu, index) => {
+        heThongRapChieu.cumRapChieu.forEach((cumRapChieu, index) => {
+          cumRapChieu.lichChieuPhim.forEach((lichChieuPhim, index) => {
+            this.thongTinLichChieu.push({
+              maLichChieu: lichChieuPhim.maLichChieu,
+              heThongRap: heThongRapChieu.tenHeThongRap,
+              cumRap: cumRapChieu.tenCumRap,
+              ngayChieuGioChieu: lichChieuPhim.ngayChieuGioChieu,
+              giaVe: lichChieuPhim.giaVe,
+              thoiLuong: lichChieuPhim.thoiLuong
+            });
+          });
+        });
+      });
+
+      this.dataSource = new MatTableDataSource(this.thongTinLichChieu);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -72,7 +113,7 @@ export class TaoLichChieuDialogComponent implements OnInit {
     this.quanLyRapService.taoLichChieu(formData).subscribe({
       next: () => {
         this.snackBar.open('Thêm lịch thành công', null, { duration: 6000 });
-        this.dialogRef.close(true);
+        this.layThongTinLichChieu();
       },
       error: err => {
         console.log(err);

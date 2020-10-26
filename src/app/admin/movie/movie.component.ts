@@ -102,7 +102,7 @@ export class MovieComponent implements OnInit {
 
   taoLichChieU(movie: Movie) {
     const dialogRef = this.dialog.open(TaoLichChieuDialogComponent, {
-      width: '650px',
+      width: '1000px',
       data: movie
     });
 
