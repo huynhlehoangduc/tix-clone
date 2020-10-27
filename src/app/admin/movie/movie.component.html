@@ -1,5 +1,9 @@
-<h3>Danh sách phim</h3>
-
+<mat-form-field class="w-50 p-2">
+  <mat-label>Search</mat-label>
+  <input (ngModelChange)="changed($event)"
+         [(ngModel)]="search"
+         matInput>
+</mat-form-field>
 <div class="mat-elevation-z8">
   <table [dataSource]="dataSource"
          class="mat-elevation-z8"

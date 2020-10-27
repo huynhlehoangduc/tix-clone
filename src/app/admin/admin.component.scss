@@ -10,3 +10,9 @@
 mat-sidenav-container {
   height: calc(100vh - 64px);
 }
+
+.mat-list-item {
+  &.active {
+    background: rgba(0,0,0, 0.1);
+  }
+}

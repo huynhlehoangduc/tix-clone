@@ -9,6 +9,9 @@ import { CreateMovieDialogComponent } from '../create-movie-dialog/create-movie-
 import { ConfirmDialogComponent } from '../../core/shared/confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaoLichChieuDialogComponent } from '../tao-lich-chieu-dialog/tao-lich-chieu-dialog.component';
+import { Subject } from 'rxjs';
+import { User } from '../../core/models/User';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie',
@@ -20,6 +23,9 @@ import { TaoLichChieuDialogComponent } from '../tao-lich-chieu-dialog/tao-lich-c
 export class MovieComponent implements OnInit {
   dataSource: MatTableDataSource<Movie>;
   displayedColumns = ['maPhim', 'tenPhim', 'moTa', 'ngayKhoiChieu', 'action'];
+  search: string;
+  searchChanged = new Subject<string>();
+  searchResult$: Subject<User[]>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -31,14 +37,29 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListMovie();
+    this.searchChanged
+      .pipe(
+        debounceTime(300))
+      .subscribe(() => {
+        this.getListMovie();
+      });
+
+    this.searchResult$ = new Subject<User[]>();
+    this.searchResult$.subscribe({
+      next: res => {
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      complete: () => {
+      }
+    });
   }
 
   getListMovie() {
-    this.movieService.getListMovie().subscribe({
+    this.movieService.getListMovie(this.search).subscribe({
       next: value => {
-        this.dataSource = new MatTableDataSource(value);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        this.searchResult$.next(value);
       }
     });
   }
@@ -106,5 +127,9 @@ export class MovieComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(added => {
     });
+  }
+
+  changed(event): void {
+    this.searchChanged.next();
   }
 }

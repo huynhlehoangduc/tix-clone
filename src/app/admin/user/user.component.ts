@@ -22,7 +22,6 @@ export class UserComponent implements OnInit {
   displayedColumns = ['taiKhoan', 'hoTen', 'email', 'soDT', 'maLoaiNguoiDung', 'action'];
   search: string;
   searchChanged = new Subject<string>();
-  /*searchResult$: Observable<User[]>;*/
   searchResult$: Subject<User[]>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
