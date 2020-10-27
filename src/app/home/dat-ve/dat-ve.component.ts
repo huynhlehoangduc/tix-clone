@@ -21,6 +21,8 @@ export class DatVeComponent implements OnInit {
   gheDangChonString: string = '';
 
   disableDatVe: boolean = true;
+  time = 5 * 60 * 1000; // 5 mins in mili seconds
+  stringTime = '5:00';
 
   constructor(private activatedRoute: ActivatedRoute,
               private quanLyRap: QuanlyrapService,
@@ -32,6 +34,15 @@ export class DatVeComponent implements OnInit {
       this.maLichChieu = params.ma_lich_chieu;
       this.getGhe();
     });
+    let self = this;
+    let interval = setInterval(function() {
+      self.time -= 1000;
+      console.log(self.time);
+      self.stringTime = parseInt((parseInt(self.time) / 1000 / 60)).toString().padStart(2, '0') + ':' + (parseInt(self.time) / 1000 % 60).toString().padStart(2, '0');
+      if (self.time === 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
   }
 
   getGhe(): void {

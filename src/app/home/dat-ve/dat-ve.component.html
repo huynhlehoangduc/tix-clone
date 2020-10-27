@@ -4,13 +4,16 @@
       <div class="clearfix"></div>
       <div *ngIf="thongTinPhim"
            class="chi-tiet-cum-rap">
-        <div class="mb-4">
+        <div class="mb-4 d-flex w-100">
           <div class="left">
             <p class="tenCumRap">{{ thongTinPhim.tenCumRap }}</p>
             <p class="ngayChieu">{{ thongTinPhim.ngayChieu | customDate }}: {{ thongTinPhim.gioChieu }}
               - {{ thongTinPhim.tenRap }}</p>
           </div>
-          <div class="right"></div>
+          <div class="right ml-auto d-flex flex-column">
+            <span class="text-center" style="font-size: 8px">Thời gian giữ ghế</span>
+            <span class="text-orange" style="font-size: 30px">{{ stringTime }}</span>
+          </div>
         </div>
         <img class="logo"
              src="https://tix.vn/app/assets/img/icons/screen.png">
