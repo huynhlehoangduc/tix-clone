@@ -13,6 +13,9 @@ export class MovieInfoComponent implements OnInit {
   slideConfig = { dots: true };
   moviesPerSlide = 8;
   slideMovies = [];
+  dangChieu = [];
+  sapChieu = [];
+  isDangChieu = true;
   heThongRaps: Rap[] = [];
   cumRaps = [];
   activeIndexCumRap: number = 0;
@@ -24,12 +27,19 @@ export class MovieInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.slideMovies);
+    let temp = [];
     this.movieService.getListMovie().subscribe({
       next: (listPhim) => {
         for (let i = 0; i < listPhim.length; i += this.moviesPerSlide) {
-          this.slideMovies.push(listPhim.slice(i, i + this.moviesPerSlide));
+          temp.push(listPhim.slice(i, i + this.moviesPerSlide));
         }
+        ;
+
+        this.sapChieu = [temp.pop()];
+        this.dangChieu = temp;
+        this.slideMovies = this.dangChieu;
+        console.log('dang chieu', this.dangChieu);
+        console.log('sap chieu', this.sapChieu);
       }
     });
 
@@ -84,5 +94,15 @@ export class MovieInfoComponent implements OnInit {
     const compareDate = new Date(date);
     const today = new Date();
     return compareDate.toLocaleDateString() === today.toLocaleDateString();
+  }
+
+  setDangChieu(): void {
+    this.slideMovies = this.dangChieu;
+    this.isDangChieu = true;
+  }
+
+  setSapChieu(): void {
+    this.slideMovies = this.sapChieu;
+    this.isDangChieu
   }
 }

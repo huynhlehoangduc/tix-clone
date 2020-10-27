@@ -65,10 +65,10 @@
   </div>-->
 
   <div class="movie-nav-container d-flex justify-content-center">
-    <a class="movie-nav-item active"
-       href="#dang-chieu">Đang chiếu</a>
-    <a class="movie-nav-item"
-       href="#sap-chieu">Sắp chiếu</a>
+    <span (click)="setDangChieu()"
+          class="movie-nav-item" style="cursor: pointer" [class.active]="isDangChieu">Đang chiếu</span>
+    <span (click)="setSapChieu()"
+          class="movie-nav-item" style="cursor: pointer" [class.active]="!isDangChieu">Sắp chiếu</span>
   </div>
 
   <div class="movie-info__list">
@@ -119,8 +119,10 @@
       </span>
     </div>
     <div class="theater-location">
-      <div *ngFor="let rap of cumRaps; let indexRap = index"
-           class="movie-wraper d-flex" [class.active]="activeIndexRap == indexRap" (click)="clickRap(rap, indexRap)">
+      <div (click)="clickRap(rap, indexRap)"
+           *ngFor="let rap of cumRaps; let indexRap = index"
+           [class.active]="activeIndexRap == indexRap"
+           class="movie-wraper d-flex">
         <img alt="vincom-danang"
              src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
         <div class="wrap-info">
@@ -140,7 +142,8 @@
     </div>
     <div class="theater-time-place">
       <!--      <h5 class="text-center">Không có suất chiếu</h5>-->
-      <div class="movie-wraper active" *ngFor="let phim of dsPhim">
+      <div *ngFor="let phim of dsPhim"
+           class="movie-wraper active">
         <div class="d-flex">
           <img alt="vincom-danang"
                src="{{ phim.hinhAnh }}">
@@ -155,8 +158,10 @@
         </div>
         <p class="s-version">2D digital</p>
         <ng-container *ngFor="let lichChieu of phim.lstLichChieuTheoPhim">
-          <button class="btn btn-light-custom ml-1" routerLink="dat-ve/{{lichChieu.maLichChieu}}">
-            <span class="main-time">{{lichChieu.ngayChieuGioChieu | date:"HH:mm"}}</span> <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>
+          <button class="btn btn-light-custom ml-1"
+                  routerLink="dat-ve/{{lichChieu.maLichChieu}}">
+            <span class="main-time">{{lichChieu.ngayChieuGioChieu | date:"HH:mm"}}</span>
+            <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>
           </button>
         </ng-container>
       </div>

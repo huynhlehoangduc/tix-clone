@@ -39,8 +39,9 @@
         height: 100%;
         top: 10px;
         left: 50%;
-        width: 195px;
+        width: 155px;
         transform: translateX(-50%);
+        overflow: hidden;
 
         .phone-screen-wrapper {
           position: relative;
@@ -50,8 +51,10 @@
           padding: 0;
 
           img {
-            width: 100%;
+            width: 155px;
             height: auto;
+            border-radius: 28px;
+            margin: 0 auto;
           }
         }
       }
