@@ -23,7 +23,12 @@
         type="button">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <a routerLink="/admin" class="navbar-brand text-white">Tix Clone</a>
+      <div class="d-flex w-100">
+        <a routerLink="/admin" class="navbar-brand text-white">Tix Clone</a>
+        <div class="spacer"></div>
+        <span class="nav-item d-flex align-items-center user-icon" routerLink="/thong-tin-ca-nhan"><i class="material-icons mr-2">account_circle</i> {{ user?.hoTen }}</span>
+        <span class="nav-item d-flex align-items-center dang-xuat" (click)="dangXuat()">Đăng xuất</span>
+      </div>
     </mat-toolbar>
   </mat-sidenav-content>
 
