@@ -15,6 +15,7 @@ export class DatVeComponent implements OnInit {
   danhSachGhe: any = [];
   thongTinPhim: ThongTinLichChieu;
   tongTien: number = 0;
+  isLoading = true;
 
   gheDangChon: Ghe[] = [];
   gheDangChonString: string = '';
@@ -29,21 +30,28 @@ export class DatVeComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.maLichChieu = params.ma_lich_chieu;
-      this.quanLyRap.layDanhSachPhongVe(this.maLichChieu).subscribe(res => {
-        this.thongTinPhim = res.thongTinPhim;
-        res.danhSachGhe.sort((a: Ghe, b: Ghe) => {
-          if (a.loaiGhe < b.loaiGhe) {
-            return -1;
-          }
-          if (a.loaiGhe > b.loaiGhe) {
-            return 1;
-          }
-          return 0;
-        });
-        for (let i = 0; i < res.danhSachGhe.length; i += 14) {
-          this.danhSachGhe.push(res.danhSachGhe.slice(i, i + 14));
+      this.getGhe();
+    });
+  }
+
+  getGhe(): void {
+    this.isLoading = true;
+    this.quanLyRap.layDanhSachPhongVe(this.maLichChieu).subscribe(res => {
+      this.isLoading = false;
+      this.thongTinPhim = res.thongTinPhim;
+      this.danhSachGhe = [];
+      res.danhSachGhe.sort((a: Ghe, b: Ghe) => {
+        if (a.loaiGhe < b.loaiGhe) {
+          return -1;
         }
+        if (a.loaiGhe > b.loaiGhe) {
+          return 1;
+        }
+        return 0;
       });
+      for (let i = 0; i < res.danhSachGhe.length; i += 14) {
+        this.danhSachGhe.push(res.danhSachGhe.slice(i, i + 14));
+      }
     });
   }
 
@@ -87,16 +95,19 @@ export class DatVeComponent implements OnInit {
       next: value => {
         this.snackBar.open('Đặt vé thành công', '', {
           duration: 3000,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
         });
-        location.reload();
+        this.getGhe();
+        this.gheDangChon = [];
+        this.gheDangChonString = '';
+        this.tongTien = 0;
       },
       error: err => {
         this.snackBar.open(typeof err.error === 'string' ? err.error : err.error.text, '', {
           duration: 3000,
-          horizontalPosition: 'end',
-          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
         });
       }
     });

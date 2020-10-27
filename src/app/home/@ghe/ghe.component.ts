@@ -14,6 +14,7 @@ export class GheComponent implements OnInit {
 
   dangChon: boolean = false;
   taiKhoan: string = '';
+  title = '';
 
   constructor() {
   }
@@ -21,6 +22,14 @@ export class GheComponent implements OnInit {
   ngOnInit(): void {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.taiKhoan = currentUser.taiKhoan;
+
+    if (this.ghe.daDat) {
+      if (this.ghe.taiKhoanNguoiDat != this.taiKhoan) {
+        this.title = 'Ghế đã có người đặt';
+      } else {
+        this.title = 'Bạn đã đặt ghế này';
+      }
+    }
   }
 
   datGhe(ghe): void {
