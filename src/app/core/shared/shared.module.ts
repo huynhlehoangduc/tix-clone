@@ -5,16 +5,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { YoutubeDialogComponent } from './youtube-dialog/youtube-dialog.component';
 import { YoutubePopupDirective } from './youtube-popup.directive';
+import { ScrollToDirective } from './scroll-to.directive';
 
 
 @NgModule({
-  declarations: [ConfirmDialogComponent, YoutubeDialogComponent, YoutubePopupDirective],
+  declarations: [ConfirmDialogComponent, YoutubeDialogComponent, YoutubePopupDirective, ScrollToDirective],
   imports: [
     CommonModule,
     MatDialogModule,
     MatButtonModule
   ],
-  exports: [ConfirmDialogComponent, YoutubePopupDirective]
+  exports: [ConfirmDialogComponent, YoutubePopupDirective, ScrollToDirective]
 })
 export class SharedModule {
 }

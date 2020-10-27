@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
 .btn-play-container {
   position: absolute;
   width: 100%;
@@ -54,7 +58,7 @@
 .max-width-940 {
   position: relative;
   max-width: 940px;
-  margin: 0 auto!important;
+  margin: 0 auto !important;
 }
 
 .movie-nav-container {
@@ -108,6 +112,7 @@
 .btn-orange {
   background: $main-orange;
   color: white;
+
   &:hover {
     color: white;
   }
@@ -117,6 +122,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: rgba(20, 50, 93, 0.9);
   color: white;
+
   &:hover {
     color: white;
     background: rgba(8, 22, 48, 0.9);
@@ -130,9 +136,10 @@
 
 .myapp-no-padding-dialog {
   mat-dialog-container {
-    padding: 0!important;
+    padding: 0 !important;
     overflow: inherit;
     position: relative;
+
     .yt-close {
       position: absolute;
       top: -20px;
@@ -140,6 +147,7 @@
       cursor: pointer;
     }
   }
+
   width: 900px;
   height: 532px;
 }

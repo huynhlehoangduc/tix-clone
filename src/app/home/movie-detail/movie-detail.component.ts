@@ -39,6 +39,7 @@ export class MovieDetailComponent implements OnInit {
       this.movieService.getMovie(this.maPhim).subscribe({
         next: (movie) => {
           this.movie = { ...movie };
+          console.log(movie);
           this.isLoaded = true;
 
           this.quanlyrapService.layThongTinHeThongRap().subscribe(danhSachRap => {
@@ -85,5 +86,8 @@ export class MovieDetailComponent implements OnInit {
         this.activeCumRapChieu = item;
       }
     });
+  }
+
+  scrollTo(destination) {
   }
 }

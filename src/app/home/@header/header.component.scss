@@ -4,6 +4,9 @@
 
 .header {
   box-shadow: 0 1px 2px #ccc;
+  background: white;
+  z-index: 10000;
+  position: relative;
 
   .nav-link {
     font-weight: bold;
