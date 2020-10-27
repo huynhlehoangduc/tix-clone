@@ -14,9 +14,7 @@ export class ThongTinCaNhanComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    console.log(this.currentUser);
     this.userService.layThongTinTaiKhoan().subscribe((res) => {
-      console.log(res);
       this.thongTinTaiKhoan = res;
     });
   }

@@ -48,8 +48,6 @@ export class MovieService {
       formData.append(key, obj[key]);
     }
 
-    console.log(formData);
-
     // return this.api.post(url, { ...values, maNhom: 'GP01' });
     return this.apiService.post(url, formData);
   }
@@ -72,8 +70,6 @@ export class MovieService {
     for (let key in obj) {
       formData.append(key, obj[key]);
     }
-
-    console.log(formData);
 
     // return this.api.post(url, { ...values, maNhom: 'GP01' });
     return this.apiService.post(url, formData);

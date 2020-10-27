@@ -43,8 +43,6 @@ export class DatVeComponent implements OnInit {
         for (let i = 0; i < res.danhSachGhe.length; i += 14) {
           this.danhSachGhe.push(res.danhSachGhe.slice(i, i + 14));
         }
-        console.log(this.danhSachGhe);
-        console.log(this.thongTinPhim);
       });
     });
   }
@@ -87,7 +85,6 @@ export class DatVeComponent implements OnInit {
 
     this.quanLyRap.datVe(params).subscribe({
       next: value => {
-        console.log(value);
         this.snackBar.open('Đặt vé thành công', '', {
           duration: 3000,
           horizontalPosition: 'end',
@@ -96,7 +93,6 @@ export class DatVeComponent implements OnInit {
         location.reload();
       },
       error: err => {
-        console.log(err);
         this.snackBar.open(typeof err.error === 'string' ? err.error : err.error.text, '', {
           duration: 3000,
           horizontalPosition: 'end',

@@ -18,6 +18,7 @@ import { GheComponent } from './@ghe/ghe.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DatVeGuard } from '../core/guards/dat-ve.guard';
 import { ThongTinCaNhanComponent } from './thong-tin-ca-nhan/thong-tin-ca-nhan.component';
+import { SharedModule } from '../core/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -48,13 +49,14 @@ const routes: Routes = [
     GheComponent,
     ThongTinCaNhanComponent,
   ],
-  imports: [
-    SlickCarouselModule,
-    CommonModule,
-    RouterModule.forChild(routes),
-    PipesModule,
-    MatSnackBarModule
-  ],
+    imports: [
+        SlickCarouselModule,
+        CommonModule,
+        RouterModule.forChild(routes),
+        PipesModule,
+        MatSnackBarModule,
+        SharedModule
+    ],
   exports: [HomeComponent],
 })
 export class HomeModule {

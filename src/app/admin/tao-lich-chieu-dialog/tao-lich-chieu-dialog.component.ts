@@ -89,7 +89,6 @@ export class TaoLichChieuDialogComponent implements OnInit {
   loadCumRap(maHeThongRap) {
     this.quanLyRapService.layThongTinCumRapTheoHeThong(maHeThongRap).subscribe(res => {
       this.cumRaps = res;
-      console.log(res);
     });
   }
 

@@ -127,3 +127,19 @@
   max-width: 940px;
   margin: 0 auto;
 }
+
+.myapp-no-padding-dialog {
+  mat-dialog-container {
+    padding: 0!important;
+    overflow: inherit;
+    position: relative;
+    .yt-close {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      cursor: pointer;
+    }
+  }
+  width: 900px;
+  height: 532px;
+}

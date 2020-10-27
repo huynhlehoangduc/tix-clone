@@ -45,8 +45,6 @@ export class CreateMovieDialogComponent implements OnInit, AfterViewInit {
 
   onFileSelected(event): void {
     this.formM.patchValue({ hinhAnh: event.target.files[0] });
-    console.log(this.formM);
-    console.log(this.imgHinhAnh);
     this.showImage(event.target, this.imgHinhAnh.nativeElement);
   }
 

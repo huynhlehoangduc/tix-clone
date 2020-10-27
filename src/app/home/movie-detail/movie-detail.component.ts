@@ -40,13 +40,11 @@ export class MovieDetailComponent implements OnInit {
         next: (movie) => {
           this.movie = { ...movie };
           this.isLoaded = true;
-          console.log(this.movie);
 
           this.quanlyrapService.layThongTinHeThongRap().subscribe(danhSachRap => {
             this.danhSachRap = danhSachRap;
             this.quanlyrapService.layThongTinLichChieuPhim(movie.maPhim).subscribe(lichChieu => {
               this.heThongRapChieu = lichChieu.heThongRapChieu;
-              console.log('lich chieu: ', this.heThongRapChieu);
               this.setActiveCumRapChieu(this.activeCumRapIndex);
             });
           });
@@ -56,7 +54,6 @@ export class MovieDetailComponent implements OnInit {
         },
         complete: () => {
           this.isLoaded = true;
-          console.log('Call Api Done');
         },
       });
     });
@@ -70,7 +67,6 @@ export class MovieDetailComponent implements OnInit {
       date.setDate(date.getDate() + 1);
       this.danhSachNgay.push(new Date(date));
     }
-    console.log('danh sach ngay', this.danhSachNgay);
   }
 
   clickCumRam(index): void {
@@ -87,7 +83,6 @@ export class MovieDetailComponent implements OnInit {
           });
         });
         this.activeCumRapChieu = item;
-        console.log('Active Cum rap chieu', this.activeCumRapChieu);
       }
     });
   }

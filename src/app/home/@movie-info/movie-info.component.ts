@@ -38,15 +38,12 @@ export class MovieInfoComponent implements OnInit {
         this.sapChieu = [temp.pop()];
         this.dangChieu = temp;
         this.slideMovies = this.dangChieu;
-        console.log('dang chieu', this.dangChieu);
-        console.log('sap chieu', this.sapChieu);
       }
     });
 
     this.quanLyRapServie.layThongTinHeThongRap().subscribe({
       next: res => {
         this.heThongRaps = res;
-        console.log(res);
         this.layThongTinCumRapTheoHeThong(res[this.activeIndexCumRap], this.activeIndexRap);
       }
     });
@@ -84,7 +81,6 @@ export class MovieInfoComponent implements OnInit {
         if (this.compareDateWithNow(item2.ngayChieuGioChieu)) {
           flag = true;
         }
-        console.log('phim', item2);
       });
       return flag;
     });

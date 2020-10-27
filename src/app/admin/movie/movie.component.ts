@@ -79,11 +79,9 @@ export class MovieComponent implements OnInit {
       data: 'Bạn có muốn xóa',
     });
     dialogRef.afterClosed().subscribe(accept => {
-      console.log('Delete movie:', id);
       if (accept) {
         this.movieService.deleteMovie(id).subscribe({
           next: value => {
-            console.log(value);
             this.snackBar.open('Xóa thành công', '', {
               duration: 3000
             });
