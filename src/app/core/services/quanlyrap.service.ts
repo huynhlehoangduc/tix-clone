@@ -20,15 +20,19 @@ export class QuanlyrapService {
   }
 
   layThongTinCumRapTheoHeThong(maHeThongRap): Observable<any> {
-    return this.apiService.get(`${this.baseEndpoint}/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`);
+    return this.apiService.get(`${this.baseEndpoint}/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}&maNhom=${this.maNhom}`);
+  }
+
+  layThongTinLichChieuHeThongRap(maHeThongRap): Observable<any> {
+    return this.apiService.get(`${this.baseEndpoint}/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${this.maNhom}`);
   }
 
   layThongTinLichChieuPhim(maPhim: string): Observable<any> {
-    return this.apiService.get(`${this.baseEndpoint}/LayThongTinLichChieuPhim?maPhim=${maPhim}`);
+    return this.apiService.get(`${this.baseEndpoint}/LayThongTinLichChieuPhim?maPhim=${maPhim}&maNhom=${this.maNhom}`);
   }
 
   layDanhSachPhongVe(maLichChieu: string): Observable<any> {
-    return this.apiService.get(`QuanLyDatVe/LayDanhSachPhongVe?maLichChieu=${maLichChieu}`);
+    return this.apiService.get(`QuanLyDatVe/LayDanhSachPhongVe?maLichChieu=${maLichChieu}&maNhom=${this.maNhom}`);
   }
 
   datVe(data): Observable<any> {

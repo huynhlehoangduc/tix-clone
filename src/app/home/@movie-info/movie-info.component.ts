@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../core/services/movie.service';
+import { QuanlyrapService } from '../../core/services/quanlyrap.service';
+import { Rap } from '../../core/models/Rap';
 
 @Component({
   selector: 'app-movie-info',
@@ -11,25 +13,76 @@ export class MovieInfoComponent implements OnInit {
   slideConfig = { dots: true };
   moviesPerSlide = 8;
   slideMovies = [];
+  heThongRaps: Rap[] = [];
+  cumRaps = [];
+  activeIndexCumRap: number = 0;
+  activeIndexRap: number = 0;
+  dsPhim = [];
 
-  constructor(private movieService: MovieService) {
+
+  constructor(private movieService: MovieService, protected quanLyRapServie: QuanlyrapService) {
   }
 
   ngOnInit(): void {
     console.log(this.slideMovies);
     this.movieService.getListMovie().subscribe({
       next: (listPhim) => {
-        console.log(listPhim);
-
         for (let i = 0; i < listPhim.length; i += this.moviesPerSlide) {
           this.slideMovies.push(listPhim.slice(i, i + this.moviesPerSlide));
         }
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {
-      },
+      }
     });
+
+    this.quanLyRapServie.layThongTinHeThongRap().subscribe({
+      next: res => {
+        this.heThongRaps = res;
+        console.log(res);
+        this.layThongTinCumRapTheoHeThong(res[this.activeIndexCumRap], this.activeIndexRap);
+      }
+    });
+  }
+
+  layThongTinCumRapTheoHeThong(heThongRap: Rap, index: number): void {
+    this.activeIndexCumRap = index;
+    this.activeIndexRap = 0;
+    this.quanLyRapServie.layThongTinLichChieuHeThongRap(heThongRap.maHeThongRap).subscribe(res => {
+      this.cumRaps = res[0].lstCumRap.filter((item, index0) => {
+        let flag = false;
+        item.danhSachPhim.forEach((item1, index1) => {
+          item1.lstLichChieuTheoPhim.forEach((item2, index2, array) => {
+            if (this.compareDateWithNow(item2.ngayChieuGioChieu)) {
+              flag = true;
+            }
+          });
+        });
+        return flag;
+      });
+
+      this.layDanhSachPhim();
+    });
+  }
+
+  clickRap(rap, index): void {
+    this.activeIndexRap = index;
+    this.layDanhSachPhim();
+  }
+
+  layDanhSachPhim(): void {
+    this.dsPhim = this.cumRaps[this.activeIndexRap]?.danhSachPhim.filter(item1 => {
+      let flag = false;
+      item1.lstLichChieuTheoPhim.forEach(item2 => {
+        if (this.compareDateWithNow(item2.ngayChieuGioChieu)) {
+          flag = true;
+        }
+        console.log('phim', item2);
+      });
+      return flag;
+    });
+  }
+
+  compareDateWithNow(date): boolean {
+    const compareDate = new Date(date);
+    const today = new Date();
+    return compareDate.toLocaleDateString() === today.toLocaleDateString();
   }
 }
