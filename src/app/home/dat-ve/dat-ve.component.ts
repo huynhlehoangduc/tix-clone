@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuanlyrapService } from '../../core/services/quanlyrap.service';
 import { ThongTinLichChieu } from '../../core/models/ThongTinLichChieu';
@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './dat-ve.component.html',
   styleUrls: ['./dat-ve.component.scss']
 })
-export class DatVeComponent implements OnInit {
+export class DatVeComponent implements OnInit, OnDestroy {
   maLichChieu: string;
   danhSachGhe: any = [];
   thongTinPhim: ThongTinLichChieu;
@@ -19,6 +19,8 @@ export class DatVeComponent implements OnInit {
 
   gheDangChon: Ghe[] = [];
   gheDangChonString: string = '';
+
+  interval = null;
 
   disableDatVe: boolean = true;
   time = 5 * 60 * 1000; // 5 mins in mili seconds
@@ -35,14 +37,20 @@ export class DatVeComponent implements OnInit {
       this.getGhe();
     });
     let self = this;
-    let interval = setInterval(function() {
+    this.interval = setInterval(function() {
       self.time -= 1000;
       console.log(self.time);
       self.stringTime = parseInt((parseInt(self.time) / 1000 / 60)).toString().padStart(2, '0') + ':' + (parseInt(self.time) / 1000 % 60).toString().padStart(2, '0');
       if (self.time === 0) {
-        clearInterval(interval);
+        clearInterval(this.interval);
       }
     }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
   getGhe(): void {
