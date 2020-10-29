@@ -10,7 +10,6 @@ import { ConfirmDialogComponent } from '../../core/shared/confirm-dialog/confirm
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaoLichChieuDialogComponent } from '../tao-lich-chieu-dialog/tao-lich-chieu-dialog.component';
 import { Subject } from 'rxjs';
-import { User } from '../../core/models/User';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -25,7 +24,7 @@ export class MovieComponent implements OnInit {
   displayedColumns = ['maPhim', 'tenPhim', 'moTa', 'ngayKhoiChieu', 'action'];
   search: string;
   searchChanged = new Subject<string>();
-  searchResult$: Subject<User[]>;
+  searchResult$: Subject<Movie[]>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -44,7 +43,7 @@ export class MovieComponent implements OnInit {
         this.getListMovie();
       });
 
-    this.searchResult$ = new Subject<User[]>();
+    this.searchResult$ = new Subject<Movie[]>();
     this.searchResult$.subscribe({
       next: res => {
         this.dataSource = new MatTableDataSource(res);
@@ -119,7 +118,7 @@ export class MovieComponent implements OnInit {
     });
   }
 
-  taoLichChieU(movie: Movie) {
+  taoLichChieU(movie: Movie): void {
     const dialogRef = this.dialog.open(TaoLichChieuDialogComponent, {
       width: '1000px',
       data: movie
