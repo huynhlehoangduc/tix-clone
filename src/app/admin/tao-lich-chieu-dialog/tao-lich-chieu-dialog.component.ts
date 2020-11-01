@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { format, parse } from 'date-fns';
 
 @Component({
   selector: 'app-tao-lich-chieu-dialog',
@@ -105,9 +106,10 @@ export class TaoLichChieuDialogComponent implements OnInit {
       return;
     }
 
+    debugger;
     const formData = { ...this.formM.value };
     formData.maPhim = this.movie.maPhim;
-    formData.ngayChieuGioChieu = formData.ngayChieuGioChieu.toLocaleString('vi-VN', { hour12: false }).split(', ').reverse().join(' ');
+    formData.ngayChieuGioChieu = format(formData.ngayChieuGioChieu, 'dd/MM/yyyy HH:mm:ss');
 
     this.quanLyRapService.taoLichChieu(formData).subscribe({
       next: () => {

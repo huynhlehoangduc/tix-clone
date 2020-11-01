@@ -116,7 +116,8 @@
     }
 
     .theater-group {
-      width: 90px;
+      min-width: 90px;
+      max-width: 90px;
       border-right: 1px solid #ddd;
       max-height: 550px;
       height: 550px;
