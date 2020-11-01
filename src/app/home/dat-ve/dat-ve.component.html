@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-9">
+      <div class="clearfix"></div>
+      <div *ngIf="thongTinPhim"
+           class="chi-tiet-cum-rap">
+        <div class="mb-4 d-flex w-100">
+          <div class="left">
+            <p class="tenCumRap">{{ thongTinPhim.tenCumRap }}</p>
+            <p class="ngayChieu">{{ thongTinPhim.ngayChieu | customDate }}: {{ thongTinPhim.gioChieu }}
+              - {{ thongTinPhim.tenRap }}</p>
+          </div>
+          <div class="right ml-auto d-flex flex-column">
+            <span class="text-center" style="font-size: 8px">Thời gian giữ ghế</span>
+            <span class="text-orange" style="font-size: 30px">{{ stringTime }}</span>
+          </div>
+        </div>
+        <img class="logo"
+             src="https://tix.vn/app/assets/img/icons/screen.png">
+      </div>
+
+      <app-loading *ngIf="isLoading"></app-loading>
+
+      <div class="danh-sach-ghe mx-auto" *ngIf="!isLoading">
+        <div *ngFor="let hangGhe of danhSachGhe; let indexHangGhe = index">
+          <span class="float-left"
+                style="width: 40px; display: inline-block; font-size: 500">{{ indexHangGhe | indexChar }}</span>
+          <div class="text-center float-left"
+               style="width: calc(100% - 40px);">
+            <app-ghe (chonGhe)="chonGhe($event, ghe)"
+                     *ngFor="let ghe of hangGhe; let i = index"
+                     [ghe]="ghe"
+                     [index]="i"
+                     [lastHangGhe]="indexHangGhe == danhSachGhe.length - 1"></app-ghe>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center pt-4" style="clear: both">
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: #3e515d;">.</span></p>
+          <p class="text-center">Ghế thường</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: #f7b500;">.</span></p>
+          <p class="text-center">Ghế vip</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: #44c020;">.</span></p>
+          <p class="text-center">Ghế đang chọn</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: rgba(16, 34, 53, .2);">.</span></p>
+          <p class="text-center">Ghế đã có người chọn</p>
+        </div>
+        <div class="mo-ta-ghe mx-2">
+          <p class="text-center mb-0"><span class="rounded ghe" style="background: rgba(16, 34, 53, .5);">.</span></p>
+          <p class="text-center">Ghế không thể chọn</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm12 col-md-3 thong-tin-dat-ve"
+         style="box-shadow: 0 10px 15px rgba(0,0,0,.3);">
+      <div class="row-thong-tin">
+        <p class="tong-tien">{{ tongTien | currency:'đ':'symbol':'1.0-0': 'vi-VN' }}</p>
+      </div>
+      <div *ngIf="thongTinPhim"
+           class="row-thong-tin px-4">
+        <p class="filmname py-2 mb-0">
+          <span class="badge-success badge py-1 px-3 mr-2">p</span>{{ thongTinPhim.tenPhim }}</p>
+        <p class="py-0 mb-0">{{ thongTinPhim.tenCumRap }}</p>
+        <p class="py-0 mb-0">{{ thongTinPhim.ngayChieu | customDate }}: {{ thongTinPhim.gioChieu }}
+          - {{ thongTinPhim.tenRap }}</p>
+      </div>
+      <div class="row-thong-tin px-4">
+        <div class="row">
+          <div class="col-7 ghe-dang-chon">Ghế {{ gheDangChonString }}</div>
+          <div class="col-5"><p class="text-right mb-0"
+                                style="color: #44c020">{{ tongTien | currency:'đ':'symbol':'1.0-0': 'vi-VN' }}</p></div>
+        </div>
+      </div>
+      <button (click)="datVe()"
+              [class.disabled]="disableDatVe"
+              [disabled]="disableDatVe"
+              class="dat-ve">Đặt vé
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.ghe {
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  line-height: 11px;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  color: transparent;
+  font-weight: 300;
+
+  &.thuong {
+    background: #3e515d;
+  }
+
+  &.vip {
+    background: #f7b500;
+  }
+
+  &.dang-chon {
+    background: #44c020 !important;
+    color: black;
+  }
+
+  &.khong-the-chon {
+    background: rgba(16, 34, 53, .2);
+    cursor: not-allowed;
+  }
+
+  &.da-dat {
+    background: rgba(16, 34, 53, .5);
+    cursor: not-allowed;
+  }
+
+}

@@ -1,3 +1,3 @@
 export class ConstValue {
-  static maNhom = 'GP01';
+  static maNhom = 'GP05';
 }

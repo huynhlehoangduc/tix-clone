@@ -1,2 +1,39 @@
-<p>admin works!</p>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false"
+               class="sidenav"
+               fixedInViewport>
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item
+         routerLink="/admin/movie" routerLinkActive="active">Phim</a>
+      <a mat-list-item
+         routerLink="/admin/nguoi-dung" routerLinkActive="active">Người dùng</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        type="button">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="d-flex w-100">
+        <a routerLink="/admin" class="navbar-brand text-white">Tix Clone</a>
+        <div class="spacer"></div>
+        <span style="font-size: 14px" class="nav-item d-flex align-items-center user-icon" routerLink="/thong-tin-ca-nhan"><i class="material-icons mr-2">account_circle</i> {{ user?.hoTen }}</span>
+        <span style="font-size: 14px" class="nav-item d-flex align-items-center dang-xuat" (click)="dangXuat()">Đăng xuất</span>
+      </div>
+    </mat-toolbar>
+  </mat-sidenav-content>
+
+  <!-- Add Content Here -->
+  <mat-sidenav-content class="py-2 px-4">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

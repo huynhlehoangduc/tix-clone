@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AdminGuard } from './core/guards/admin.guard';
 // import { HomeComponent } from './home/home.component';
 // import { TixAuthComponent } from './tix-auth/tix-auth.component';
 // import { HomeModule } from './home/home.module';
@@ -20,7 +22,9 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AdminGuard],
   },
+  { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 
 @NgModule({

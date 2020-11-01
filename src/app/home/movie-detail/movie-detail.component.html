@@ -1,34 +1,96 @@
-<div class="movie-detail-container">
-  <img class="bg-section" src="https://s3img.vcdn.vn/123phim/2020/09/ac-quy-doi-dau-deliver-us-from-evil-c16-15994546882305.jpg"
-       alt="">
-  <app-loading [loading]="!this.isLoaded"></app-loading>
+<div class=""
+     style="background-color: rgb(10, 32, 41);">
 
-  <div *ngIf="this.isLoaded && movie"
-       class="movie-info-conatiner p-5">
-    <div class="max-width-940 row">
-      <div class="col-3">
-        <div class="movie-img">
-          <img alt=""
-               class="rounded"
-               src="{{ movie.hinhAnh }}">
-          <div class="btn-play-container">
-            <button class="btn-play">
-              <img src="https://tix.vn/app/assets/img/icons/play-video.png">
-            </button>
+  <div class="movie-detail-container"
+       style="padding-bottom: 80px; padding-top: 80px">
+    <img alt=""
+         class="bg-section"
+         src="https://s3img.vcdn.vn/123phim/2020/09/ac-quy-doi-dau-deliver-us-from-evil-c16-15994546882305.jpg">
+    <div class="blur"></div>
+    <app-loading [loading]="!this.isLoaded"></app-loading>
+
+    <div *ngIf="this.isLoaded && movie"
+         class="movie-info-conatiner p-5">
+      <div class="max-width-940 row">
+        <div class="col-3">
+          <div class="movie-img">
+            <img alt=""
+                 class="rounded"
+                 src="{{ movie.hinhAnh }}">
+            <div class="btn-play-container">
+              <button [link]="movie.trailer"
+                      appYoutubePopup
+                      class="btn-play">
+                <img src="https://tix.vn/app/assets/img/icons/play-video.png">
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-6 d-flex align-items-center movie-info">
-        <div class="">
-          <div>
-            <span class="detailMainInfo1 ng-binding">{{ movie.ngayKhoiChieu | date: 'dd.MM.yyyy' }}</span><br>
+        <div class="col-6 d-flex align-items-center movie-info">
+          <div class="">
+            <div>
+              <span class="detailMainInfo1 ng-binding">{{ movie.ngayKhoiChieu | date: 'dd.MM.yyyy' }}</span><br>
+            </div>
+            <h3 class="ten-phim"><span class="badge badge-orange mr-2">C18</span>{{ movie.tenPhim }}</h3>
+            <p>{{ movie?.lichChieu[0]?.thoiLuong }} phút - 0 IMDb - 2D/Digital</p>
+            <p class="detailMainInfo1 ng-binding">{{ movie.moTa }}</p>
+            <button class="btn btn-orange mr-3 px-4" appScrollTo [destination]="'#cumRap'">Mua vé</button>
           </div>
-          <h3>{{ movie.tenPhim }}</h3>
-          <p class="detailMainInfo1 ng-binding">{{ movie.moTa }}</p>
-          <button class="btn btn-orange mr-3 px-4">Mua vé</button>
         </div>
+        <div class="col-3"></div>
       </div>
-      <div class="col-3"></div>
     </div>
   </div>
+  <div class="movie-detail-container p-4 mt-0"
+  >
+    <div *ngIf="this.isLoaded && movie"
+         class="max-width-940 cum-rap-theo-phim mt-0 rounded d-flex" style="margin-top: 0!important;">
+      <div class="cum-raps" id="cumRap">
+        <ng-container *ngFor="let rap of danhSachRap; let i = index">
+          <div (click)="clickCumRam(i)"
+               [class.active]="i == activeCumRapIndex"
+               class="p-3 cum-rap">
+            <img alt="{{ rap.biDanh }}"
+                 class="cum-rap-logo"
+                 src="{{ rap.logo }}">
+            <span class="pl-3 ten-cum-rap">{{ rap.tenHeThongRap }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="phong-ve border-left">
+        <div class="DayOfWeeks w-100 d-flex">
+          <div (click)="activeDate = date"
+               *ngFor="let date of danhSachNgay"
+               [class.active]="activeDate.toLocaleDateString() == date.toLocaleDateString()"
+               class="DayOfWeek">
+            <p class="day">{{ date | date: "EEEE":"": "vi-VN" }}</p>
+            <p class="date">{{ date | date: "dd"}}</p>
+          </div>
+        </div>
+        <ng-container *ngFor="let cumRapChieu of activeCumRapChieu.cumRapChieu">
+          <div class="cum-rap-chieu w-100 mb-3">
+            <div class="w-100 py-3 px-4 mx-2">
+              <img *ngIf="cumRapChieu.hinhAnh"
+                   alt="{{cumRapChieu.tenCumRap}}"
+                   class="anh-rap"
+                   src="{{ cumRapChieu.hinhAnh }}">
+              <span class="ten-rap">{{cumRapChieu.tenCumRap}}</span>
+            </div>
+            <div class="w-100 px-4">
+              <ng-container *ngFor="let lichChieuPhim of cumRapChieu.lichChieuPhim">
+                <ng-container *ngIf="lichChieuPhim.ngayChieuGioChieu.toLocaleDateString() == activeDate.toLocaleDateString()">
+                  <a routerLink="/dat-ve/{{ lichChieuPhim.maLichChieu }}">
+                    <span class="badge badge-light py-2 px-4 m-2 rounded border">
+                      <span class="gio-chieu">{{ lichChieuPhim.ngayChieuGioChieu | date: "HH:mm"}}</span>
+                    </span>
+                  </a>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
 </div>

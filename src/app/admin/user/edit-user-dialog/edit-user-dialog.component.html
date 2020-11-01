@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>Tạo User</h1>
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="formM"
+      novalidate>
+  <div mat-dialog-content>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Tài khoản</mat-label>
+      <input
+        formControlName="taiKhoan"
+        matInput>
+    </mat-form-field>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Mật khẩu</mat-label>
+      <input
+        formControlName="matKhau"
+        matInput
+        type="password">
+    </mat-form-field>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Họ và tên</mat-label>
+      <input
+        formControlName="hoTen"
+        matInput>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Số điện thoại</mat-label>
+      <input
+        formControlName="soDT"
+        matInput>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Email</mat-label>
+      <input formControlName="email"
+             matInput
+             type="text">
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2" appearance="fill">
+      <mat-label>Loại người dùng</mat-label>
+      <mat-select formControlName="maLoaiNguoiDung">
+        <mat-option *ngFor="let loaiNguoiDung of loaiNguoiDungs" [value]="loaiNguoiDung.key">
+          {{loaiNguoiDung.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div align="end"
+       mat-dialog-actions>
+    <button color="primary"
+            mat-raised-button
+            type="submit">Lưu
+    </button>
+    <button mat-dialog-close
+            mat-button
+            type="button">Hủy
+    </button>
+  </div>
+</form>

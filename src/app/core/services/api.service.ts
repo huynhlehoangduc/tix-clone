@@ -10,7 +10,7 @@ import { catchError } from 'rxjs/operators';
 // @ts-ignore
 export class ApiService {
 
-  public baseUrl = 'http://movie0706.cybersoft.edu.vn/api';
+  public baseUrl = 'https://movie0706.cybersoft.edu.vn/api';
 
   constructor(private http: HttpClient) {
   }
@@ -26,7 +26,7 @@ export class ApiService {
         console.log('Lỗi Authorization');
         break;
       case 404:
-        console.log('Lỗi 401');
+        console.log('Lỗi 404');
         break;
       default:
         break;

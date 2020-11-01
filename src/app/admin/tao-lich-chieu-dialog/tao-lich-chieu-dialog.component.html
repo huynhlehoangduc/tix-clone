@@ -1,0 +1,131 @@
+<h1 class="text-center"
+    mat-dialog-title>Thông tin lịch chiếu phim của phim {{ movie.tenPhim }}</h1>
+<hr>
+
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="formM"
+      novalidate>
+  <div class="mat-typography"
+       mat-dialog-content>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Hệ thống rạp</mat-label>
+      <mat-select (selectionChange)="onChangeHeThongRap($event)"
+                  formControlName="heThongRap">
+        <mat-option *ngFor="let heThongRap of thongTinHeThongRap"
+                    [value]="heThongRap.maHeThongRap">
+          {{ heThongRap.tenHeThongRap }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Ngày giờ khởi chiếu</mat-label>
+      <input [owlDateTimeTrigger]="dt1"
+             [owlDateTime]="dt1"
+             formControlName="ngayChieuGioChieu"
+             matInput
+             placeholder="Date Time">
+      <owl-date-time #dt1></owl-date-time>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Cụm rạp</mat-label>
+      <mat-select (selectionChange)="onChangeCumRap($event)"
+                  formControlName="cumRap">
+        <mat-option *ngFor="let cumRap of cumRaps"
+                    [value]="cumRap.maCumRap">
+          {{ cumRap.tenCumRap }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Giá vé</mat-label>
+      <input formControlName="giaVe"
+             matInput
+             type="number"
+             value="">
+    </mat-form-field>
+
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Rạp</mat-label>
+      <mat-select formControlName="maRap">
+        <mat-option *ngFor="let rap of raps"
+                    [value]="rap.maRap">
+          {{ rap.tenRap }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button color="primary"
+            mat-raised-button
+            type="submit">Lưu
+    </button>
+
+    <table [dataSource]="dataSource"
+           class="mat-elevation-z8 w-100"
+           mat-table>
+      <ng-container matColumnDef="maLichChieu">
+        <th *matHeaderCellDef
+            mat-header-cell> Mã lịch chiếu
+        </th>
+        <td *matCellDef="let element"
+            mat-cell> {{element.maLichChieu}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="heThongRap">
+        <th *matHeaderCellDef
+            mat-header-cell> Hệ thống rạp
+        </th>
+        <td *matCellDef="let element"
+            mat-cell> {{element.heThongRap}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cumRap">
+        <th *matHeaderCellDef
+            mat-header-cell> Cụm rạp
+        </th>
+        <td *matCellDef="let element"
+            mat-cell> {{element.cumRap}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ngayChieuGioChieu">
+        <th *matHeaderCellDef
+            mat-header-cell> Ngày giờ chiếu
+        </th>
+        <td *matCellDef="let element"
+            mat-cell> {{element.ngayChieuGioChieu | date: "dd-MM-yyyy HH:mm"}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="giaVe">
+        <th *matHeaderCellDef
+            mat-header-cell> Giá vé
+        </th>
+        <td *matCellDef="let element"
+            mat-cell> {{element.giaVe | currency : 'đ': 'đ': '1.0-0'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="thoiLuong">
+        <th *matHeaderCellDef
+            mat-header-cell> Thời lượng
+        </th>
+        <td *matCellDef="let element"
+            mat-cell> {{element.thoiLuong}} phút </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns"
+          mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;"
+          mat-row></tr>
+    </table>
+  </div>
+
+  <div align="end"
+       mat-dialog-actions>
+    <mat-paginator [pageSizeOptions]="[5, 25, 100]"></mat-paginator>
+    <button mat-button
+            mat-dialog-close
+            type="button">Đóng
+    </button>
+  </div>
+</form>

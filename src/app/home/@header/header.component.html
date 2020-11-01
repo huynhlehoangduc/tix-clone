@@ -1,7 +1,7 @@
 <header class="header">
   <nav class="navbar py-0 px-3 navbar-expand-md navbar-light">
     <a class="navbar-brand"
-       href="#">
+       routerLink="/">
       <img alt=""
            src="https://tix.vn/app/assets/img/icons/web-logo.png"/>
     </a>
@@ -39,13 +39,13 @@
           />
         </div>
         <a class="nav-item nav-link active"
-           href="#">Lịch chiếu</a>
+           routerLink="/">Lịch chiếu</a>
         <a class="nav-item nav-link"
-           href="#">Cụm rạp</a>
+           appScrollTo [destination]="'#cumRap'" routerLink="/">Cụm rạp</a>
         <a class="nav-item nav-link"
-           href="#">Tin tức</a>
+           href="#" routerLink="/">Tin tức</a>
         <a class="nav-item nav-link"
-           href="#">Ứng dụng</a>
+           appScrollTo [destination]="'#ungDung'" routerLink="/">Ứng dụng</a>
       </div>
     </div>
     <div class="header__right ml-auto">
@@ -58,31 +58,13 @@
         />
 
         <span *ngIf="currentUser!=null ; else dangNhapSpan"
-              class="register-span mr-3">{{ currentUser.hoTen }}</span>
+              class="register-span mr-3 cursor-pointer" routerLink="/thong-tin-ca-nhan">Chào, {{ currentUser.hoTen }}</span>
         <ng-template #dangNhapSpan>
-          <span class="register-span mr-3"
+          <span class="register-span mr-3 cursor-pointer"
                 routerLink="/login">Đăng nhập</span>
         </ng-template>
-        <div class="dropdown header__location d-flex align-items-center">
-          <button
-            aria-expanded="false"
-            aria-haspopup="true"
-            class="btn dropdown-toggle"
-            data-toggle="dropdown"
-            id="triggerId"
-            type="button"
-          >
-            <i class="fa fa-map-marker-alt mr-1"></i> HCM
-          </button>
-          <div aria-labelledby="triggerId"
-               class="dropdown-menu">
-            <a class="dropdown-item"
-               href="#">Hồ Chí Minh</a>
-            <a class="dropdown-item"
-               href="#">Hà Nội</a>
-            <a class="dropdown-item"
-               href="#">Đà Nắng</a>
-          </div>
+        <div class="header__location d-flex align-items-center cursor-pointer" *ngIf="currentUser" (click)="dangXuat()">
+          Đăng xuất
         </div>
       </div>
     </div>

@@ -1,1 +1,91 @@
-<p>movie works!</p>
+<mat-form-field class="w-50 p-2">
+  <mat-label>Search</mat-label>
+  <input (ngModelChange)="changed($event)"
+         [(ngModel)]="search"
+         matInput>
+</mat-form-field>
+<div class="mat-elevation-z8">
+  <table [dataSource]="dataSource"
+         class="mat-elevation-z8"
+         mat-table
+         width="100%">
+    <!-- Position Column -->
+    <ng-container matColumnDef="maPhim">
+      <th *matHeaderCellDef
+          mat-header-cell> Mã phim
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.maPhim}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="tenPhim">
+      <th *matHeaderCellDef
+          mat-header-cell> Tên Phim
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.tenPhim}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ngayKhoiChieu">
+      <th *matHeaderCellDef
+          mat-header-cell> Ngày Khởi chiếu
+      </th>
+      <td *matCellDef="let element"
+          mat-cell> {{element.ngayKhoiChieu | date: "dd-MM-yyyy"}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="moTa">
+      <th *matHeaderCellDef
+          mat-header-cell> Mô tả
+      </th>
+      <td *matCellDef="let element"
+          mat-cell
+          title="{{ element.moTa }}"> {{element.moTa | shortStr:50 }} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th *matHeaderCellDef
+          class="text-center"
+          mat-header-cell>
+        <button (click)="createMovie()"
+                color="primary"
+                mat-mini-fab
+                title="Tạo mới">
+          <mat-icon>add</mat-icon>
+        </button>
+      </th>
+      <td *matCellDef="let element"
+          class="text-center"
+          mat-cell>
+        <button (click)="taoLichChieU(element)"
+                color="accent"
+                mat-raised-button
+                title="Tạo lịch chiếu">
+          Tạo lịch chiếu
+        </button>
+        <button (click)="updateMovie(element)"
+                color="primary"
+                mat-icon-button
+                title="Chỉnh sửa">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="deleteMovie(element.maPhim)"
+                color="warn"
+                mat-icon-button
+                title="Xóa">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns"
+        mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;"
+        mat-row></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>

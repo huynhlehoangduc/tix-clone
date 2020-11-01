@@ -94,15 +94,47 @@
 
   .movie-info-theater {
     border: 1px solid #ddd;
-    height: 705px;
+    max-height: 550px;
+    height: 550px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      height: 2px;
+      background-color: #e8e3e3;
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
 
     & > div {
       height: 100%;
     }
 
     .theater-group {
-      width: 90px;
+      min-width: 90px;
+      max-width: 90px;
       border-right: 1px solid #ddd;
+      max-height: 550px;
+      height: 550px;
+
+
+      &::-webkit-scrollbar {
+        height: 2px;
+        background-color: #e8e3e3;
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+      }
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
 
       .theater-group-icon {
         padding: 20px;
@@ -136,8 +168,25 @@
     }
 
     .theater-location {
+      min-width: 280px;
       width: 280px;
       border-right: 1px solid #ddd;
+      overflow-y: scroll;
+      max-height: 550px;
+      height: 550px;
+
+      &::-webkit-scrollbar {
+        height: 2px;
+        background-color: #e8e3e3;
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+      }
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
     }
 
     .movie-wraper {
@@ -212,5 +261,11 @@
         margin-top: 15px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .movie-info-theater {
+    display: none!important;
   }
 }

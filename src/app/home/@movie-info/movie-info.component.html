@@ -1,5 +1,5 @@
 <div class="movie-info">
-  <div class="buy-now-container px-3 py-4 d-flex align-items-center">
+  <!--<div class="buy-now-container px-3 py-4 d-flex align-items-center">
     <div class="dropdown buy-now-container__film ">
       <button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle py-2" data-toggle="dropdown"
               id="triggerId"
@@ -62,33 +62,45 @@
     </div>
 
     <button class="btn btn-dark buy-now-container__film-info py-2">Mua vé ngay</button>
-  </div>
+  </div>-->
 
   <div class="movie-nav-container d-flex justify-content-center">
-    <a class="movie-nav-item active" href="#dang-chieu">Đang chiếu</a>
-    <a class="movie-nav-item" href="#sap-chieu">Sắp chiếu</a>
+    <span (click)="setDangChieu()"
+          class="movie-nav-item" style="cursor: pointer" [class.active]="isDangChieu">Đang chiếu</span>
+    <span (click)="setSapChieu()"
+          class="movie-nav-item" style="cursor: pointer" [class.active]="!isDangChieu">Sắp chiếu</span>
   </div>
 
   <div class="movie-info__list">
     <ngx-slick-carousel #slickModal="slick-carousel"
                         [config]="slideConfig"
                         class="carousel">
-      <div *ngFor="let slide of slideMovies" class="slide" ngxSlickItem>
+      <div *ngFor="let slide of slideMovies"
+           class="slide"
+           ngxSlickItem>
         <div class="row">
-          <div *ngFor="let movie of slide" class="movie-card col-3 my-3">
+          <div *ngFor="let movie of slide"
+               class="movie-card col-3 my-3">
             <div class="img-card mb-2">
-              <img alt="" class="rounded" src="{{ movie.hinhAnh }}" width="100%">
+              <img alt=""
+                   class="rounded"
+                   src="{{ movie.hinhAnh }}"
+                   width="100%">
               <div class="btn-play-container">
-                <button class="btn-play" data-url="{{ movie.trailer }}">
-                  <img class="movie-card__img-play" src="https://tix.vn/app/assets/img/icons/play-video.png">
+                <button class="btn-play"
+                        data-url="{{ movie.trailer }}" appYoutubePopup [link]="movie.trailer">
+                  <img class="movie-card__img-play"
+                       src="https://tix.vn/app/assets/img/icons/play-video.png">
                 </button>
               </div>
             </div>
             <div class="movie-card__info">
-              <h5 class="movie-card__info-detail"><span class="badge badge-success p-2 mr-2">C13</span>{{ movie.tenPhim }}
+              <h5 class="movie-card__info-detail">
+                <span class="badge badge-success p-2 mr-2">C13</span>{{ movie.tenPhim }}
               </h5>
               <span class="movie-card__info-detail">{{ movie.ngayKhoiChieu | date : 'dd.MM.yyyy' }}</span>
-              <a class="py-2 btn w-100 movie-card__buy-now" routerLink="movie-detail/{{ movie.maPhim }}">MUA NGAY</a>
+              <a class="py-2 btn w-100 movie-card__buy-now"
+                 routerLink="movie-detail/{{ movie.maPhim }}">MUA NGAY</a>
             </div>
           </div>
         </div>
@@ -96,56 +108,48 @@
     </ngx-slick-carousel>
   </div>
 
-  <div class="movie-info-theater d-flex rounded">
+  <div id="cumRap" class="movie-info-theater d-flex rounded">
     <div class="theater-group">
-      <a class="theater-group-icon active" href="#">
-        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/ee621ee05dcd4565caead4f29421b41e.png">
-      </a>
-      <a class="theater-group-icon" href="#">
-        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/e520781386bd5436e94d6e15e193a005.png">
-      </a>
-      <a class="theater-group-icon" href="#">
-        <img alt="cgv" src="https://s3img.vcdn.vn/123phim/2018/09/16b811ab4773065c15eb0e9be67527b3.png">
-      </a>
+      <span (click)="layThongTinCumRapTheoHeThong(heThongRap, i)"
+            *ngFor="let heThongRap of heThongRaps; let i = index"
+            [class.active]="i == activeIndexCumRap"
+            class="theater-group-icon">
+        <img alt="{{heThongRap.tenHeThongRap}}"
+             src="{{heThongRap.logo}}">
+      </span>
     </div>
     <div class="theater-location">
-      <div class="movie-wraper active d-flex">
-        <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+      <div (click)="clickRap(rap, indexRap)"
+           *ngFor="let rap of cumRaps; let indexRap = index"
+           [class.active]="activeIndexRap == indexRap"
+           class="movie-wraper d-flex">
+        <img alt="vincom-danang"
+             src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
         <div class="wrap-info">
           <p>
-            <span class="text-orange">CGV</span> - Vĩnh Trung Plaza
+            {{ rap.tenCumRap }}
           </p>
           <p>
-            <span class="fs-12 text-smoke">255-257, đường Hùng Vương</span>
+            <span class="fs-12 text-smoke"
+                  title="{{ rap.diaChi }}">{{ rap.diaChi | shortStr }}</span>
           </p>
           <p>
-            <a class="text-orange fs-12" href="#">[Chi tiết]</a>
-          </p>
-        </div>
-      </div>
-      <div class="movie-wraper d-flex">
-        <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
-        <div class="wrap-info">
-          <p>
-            <span class="text-orange">CGV</span> - Vĩnh Trung Plaza
-          </p>
-          <p>
-            <span class="fs-12 text-smoke">255-257, đường Hùng Vương</span>
-          </p>
-          <p>
-            <a class="text-orange fs-12" href="#">[Chi tiết]</a>
+            <a class="text-orange fs-12"
+               routerLink="/rap-chieu-phim/{{ rap.maCumRap }}">[Chi tiết]</a>
           </p>
         </div>
       </div>
     </div>
     <div class="theater-time-place">
       <!--      <h5 class="text-center">Không có suất chiếu</h5>-->
-      <div class="movie-wraper active">
+      <div *ngFor="let phim of dsPhim"
+           class="movie-wraper active">
         <div class="d-flex">
-          <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
+          <img alt="vincom-danang"
+               src="{{ phim.hinhAnh }}">
           <div class="wrap-info">
             <p>
-              <span class="badge badge-orange">C16</span> - KẺ đánh cắp giấc mơ
+              <span class="badge badge-orange">C16</span> - {{ phim.tenPhim }}
             </p>
             <p>
               <span class="fs-12 text-smoke">86 phút - TIX 6.2 - IMDb 0</span>
@@ -153,26 +157,13 @@
           </div>
         </div>
         <p class="s-version">2D digital</p>
-        <button class="btn btn-light-custom">
-          <span class="main-time">21:40</span> <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>
-        </button>
-      </div>
-      <div class="movie-wraper">
-        <div class="d-flex">
-          <img alt="vincom-danang" src="https://s3img.vcdn.vn/123phim/2018/09/cgv-vincom-da-nang-15380177756657.jpg">
-          <div class="wrap-info">
-            <p>
-              <span class="badge badge-orange">C16</span> - KẺ đánh cắp giấc mơ
-            </p>
-            <p>
-              <span class="fs-12 text-smoke">86 phút - TIX 6.2 - IMDb 0</span>
-            </p>
-          </div>
-        </div>
-        <p class="s-version">2D digital</p>
-        <button class="btn btn-light-custom">
-          <span class="main-time">21:40</span> <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>
-        </button>
+        <ng-container *ngFor="let lichChieu of phim.lstLichChieuTheoPhim">
+          <button class="btn btn-light-custom m-1"
+                  routerLink="dat-ve/{{lichChieu.maLichChieu}}">
+            <span class="main-time">{{lichChieu.ngayChieuGioChieu | date:"HH:mm"}}</span>
+            <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>
+          </button>
+        </ng-container>
       </div>
     </div>
   </div>

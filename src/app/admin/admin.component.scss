@@ -1,0 +1,32 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+.mat-list-item {
+  &.active {
+    background: rgba(0,0,0, 0.1);
+  }
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.user-icon {
+  cursor: pointer;
+}
+.dang-xuat {
+  font-size: 15px;
+  margin-left: 21px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}

@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Tạo mới Phim</h1>
+<form (ngSubmit)="onSubmit()"
+      [formGroup]="formM"
+      novalidate>
+  <div mat-dialog-content>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Tên phim</mat-label>
+      <input
+        formControlName="tenPhim"
+        matInput>
+    </mat-form-field>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Bí danh</mat-label>
+      <input
+        formControlName="biDanh"
+        matInput>
+    </mat-form-field>
+    <mat-form-field class="w-50 p-2">
+      <mat-label>Trailer</mat-label>
+      <input
+        formControlName="trailer"
+        matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill"
+                    class="w-50 p-2">
+      <mat-label>Ngày khởi chiếu</mat-label>
+      <input [matDatepicker]="picker"
+             formControlName="ngayKhoiChieu"
+             matInput>
+      <mat-datepicker-toggle [for]="picker"
+                             matSuffix></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100 p-2">
+      <mat-label>Mô tả</mat-label>
+      <textarea cols="30"
+                formControlName="moTa"
+                matInput
+                rows="4"></textarea>
+    </mat-form-field>
+
+    <div class="w-100">
+      <button (click)="fileInput.click()"
+              color="primary"
+              mat-raised-button
+              type="button">
+        <span>Chọn hình</span>
+      </button>
+      <img #imgHinhAnh
+           alt=""
+           class="ml-2 img-fluid rounded"
+           src=""
+           style="height: 100px">
+      <span *ngIf="formM.value.hinhAnh"
+            class="ml-2">{{ formM.value.hinhAnh.name }}
+        ({{ formM.value.hinhAnh.size / 1024 / 1024 | number }}MB)</span>
+      <input #fileInput
+             (change)="onFileSelected($event)"
+             style="display:none;"
+             type="file"/>
+    </div>
+  </div>
+  <div align="end"
+       mat-dialog-actions>
+    <button color="primary"
+            mat-raised-button
+            type="submit">Lưu
+    </button>
+    <button (click)="onNoClick()"
+            mat-button
+            type="button">Hủy
+    </button>
+  </div>
+</form>
