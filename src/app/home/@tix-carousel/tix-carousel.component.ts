@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class TixCarouselComponent implements OnInit {
 
   slides = [
-    {imgPath: 'https://s3img.vcdn.vn/123phim/2020/08/bi-mat-thien-duong-15972163589211.jpg', youtubeLink: 'https://youtu.be/5IMIdd3iq6A'},
-    {imgPath: 'https://s3img.vcdn.vn/123phim/2020/08/ca-sau-15972253022491.png', youtubeLink: 'https://youtu.be/5IMIdd3iq6A'},
-    {imgPath: 'https://s3img.vcdn.vn/123phim/2020/07/du-lich-chet-choc-15961360123636.jpg', youtubeLink: 'https://youtu.be/5IMIdd3iq6A'},
+    {imgPath: 'https://s3img.vcdn.vn/123phim/2020/10/cuc-no-hoa-cuc-cung-pawn-p-16021265927768.png', youtubeLink: 'https://www.youtube.com/embed/mukpuMI4eSw'},
+    {imgPath: 'https://s3img.vcdn.vn/123phim/2020/10/tiec-trang-mau-blood-moon-party-16021267739246.png', youtubeLink: 'https://www.youtube.com/embed/Vgb1uUmpQNU'},
+    {imgPath: 'https://s3img.vcdn.vn/123phim/2020/09/rom-c18-16008300686919.png', youtubeLink: 'https://www.youtube.com/embed/XRm1P7oGpMQ'},
   ];
 
   slideConfig = { dots : true };
