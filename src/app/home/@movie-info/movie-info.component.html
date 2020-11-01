@@ -135,7 +135,7 @@
           </p>
           <p>
             <a class="text-orange fs-12"
-               href="#">[Chi tiết]</a>
+               routerLink="/rap-chieu-phim/{{ rap.maCumRap }}">[Chi tiết]</a>
           </p>
         </div>
       </div>
@@ -158,7 +158,7 @@
         </div>
         <p class="s-version">2D digital</p>
         <ng-container *ngFor="let lichChieu of phim.lstLichChieuTheoPhim">
-          <button class="btn btn-light-custom ml-1"
+          <button class="btn btn-light-custom m-1"
                   routerLink="dat-ve/{{lichChieu.maLichChieu}}">
             <span class="main-time">{{lichChieu.ngayChieuGioChieu | date:"HH:mm"}}</span>
             <span style="font-weight: 500; font-size: 14px"> ~ 23:06</span>

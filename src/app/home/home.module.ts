@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DatVeGuard } from '../core/guards/dat-ve.guard';
 import { ThongTinCaNhanComponent } from './thong-tin-ca-nhan/thong-tin-ca-nhan.component';
 import { SharedModule } from '../core/shared/shared.module';
+import { RapChieuPhimComponent } from './rap-chieu-phim/rap-chieu-phim.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomePageComponent },
       { path: 'movie-detail/:id', component: MovieDetailComponent },
+      { path: 'rap-chieu-phim/:ma_rap_chieu', component: RapChieuPhimComponent},
       { path: 'dat-ve/:ma_lich_chieu', component: DatVeComponent, canActivate: [DatVeGuard] },
       { path: 'thong-tin-ca-nhan', component: ThongTinCaNhanComponent, canActivate: [DatVeGuard] },
     ],
@@ -48,6 +50,7 @@ const routes: Routes = [
     DatVeComponent,
     GheComponent,
     ThongTinCaNhanComponent,
+    RapChieuPhimComponent,
   ],
     imports: [
         SlickCarouselModule,

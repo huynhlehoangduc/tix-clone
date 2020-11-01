@@ -87,7 +87,4 @@ export class MovieDetailComponent implements OnInit {
       }
     });
   }
-
-  scrollTo(destination) {
-  }
 }

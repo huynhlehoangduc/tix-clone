@@ -99,6 +99,6 @@ export class MovieInfoComponent implements OnInit {
 
   setSapChieu(): void {
     this.slideMovies = this.sapChieu;
-    this.isDangChieu
+    this.isDangChieu = true;
   }
 }

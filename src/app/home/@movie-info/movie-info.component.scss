@@ -263,3 +263,9 @@
     }
   }
 }
+
+@media screen and (max-width: 768px){
+  .movie-info-theater {
+    display: none!important;
+  }
+}
