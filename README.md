@@ -17,7 +17,7 @@ Link demo: https://huynhlehoangduc.github.io/tix-clone/
 - [Signin](#signin)
 
 ### 1. Home page:  
-#### - Trang chủ  
+#### Trang chủ  
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/homepage_1.png?raw=true)
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_3.png?raw=true)
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_4.png?raw=true)
