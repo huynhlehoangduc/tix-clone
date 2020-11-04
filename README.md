@@ -5,6 +5,7 @@ Link demo: https://huynhlehoangduc.github.io/tix-clone/
 ## Các chức năng:
 1. Home page:
 - Trang chủ
+![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/homepage_1.png?raw=true)
 - Chi tiết phim
 - Đặt vé
 - Thông tin cá nhân
