@@ -1,8 +1,21 @@
 # TixClone
 #### Dự án đươc clone từ trang http://tix.vn/
 *Một dự án quản lý rạp chiếu phim*    
-Link demo: https://huynhlehoangduc.github.io/tix-clone/  
+Link demo: https://huynhlehoangduc.github.io/tix-clone/ 
+
 ## Các chức năng:
+#### Home Page
+- [Trang chủ](#trang-chu)  
+- [Chi tiết phim](#chi-tiet-phim)
+- [Đặt vé](#dat-ve)
+- [Thông tin cá nhân](#thong-tin-ca-nhan)
+#### Admin Page
+- [Quản lý phim - CRUD](#quan-ly-phim)
+- [Quản lý người dùng - CRUD](#quan-ly-phim)
+#### Auth Page
+- [Login](#login)
+- [Signin](#signin)
+
 ### 1. Home page:  
 #### - Trang chủ  
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/homepage_1.png?raw=true)
@@ -35,4 +48,3 @@ Link demo: https://huynhlehoangduc.github.io/tix-clone/
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_22.png?raw=true)
 #### - Signin
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_23.png?raw=true)
-
