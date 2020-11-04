@@ -24,11 +24,11 @@ Link demo: https://huynhlehoangduc.github.io/tix-clone/
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_5.png?raw=true)
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_6.png?raw=true)
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_7.png?raw=true)
-#### - Chi tiết phim
+#### Chi tiết phim
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_8.png?raw=true)
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_9.png?raw=true)
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_10.png?raw=true)
-#### - Đặt vé
+#### Đặt vé
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_12.png?raw=true)
 #### - Thông tin cá nhân
 ![alt](https://github.com/huynhlehoangduc/tix-clone/blob/master/demo-images/Screenshot_13.png?raw=true)
