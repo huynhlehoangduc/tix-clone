@@ -5,10 +5,10 @@ Link demo: https://huynhlehoangduc.github.io/tix-clone/
 
 ## Các chức năng:
 #### Home Page
-- [Trang chủ](#trang-chu)  
-- [Chi tiết phim](#chi-tiet-phim)
-- [Đặt vé](#dat-ve)
-- [Thông tin cá nhân](#thong-tin-ca-nhan)
+- [Trang chủ](#trang-chủ)  
+- [Chi tiết phim](#chi-tiết-phim)
+- [Đặt vé](#đặt-vé)
+- [Thông tin cá nhân](#thông-tin-cá-nhân)
 #### Admin Page
 - [Quản lý phim - CRUD](#quan-ly-phim)
 - [Quản lý người dùng - CRUD](#quan-ly-phim)
