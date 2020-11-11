@@ -30,17 +30,29 @@
         </ng-container>
       </div>
       <div class="form-group">
-        <input class="form-control" id="matKhauConfirm" name="matKhauConfirm" ngModel placeholder="Nhập lại mật khẩu"
-               type="password">
-        <small class="text-muted help-text">Help text</small>
+        <input #matKhauConfirm="ngModel" class="form-control" id="matKhauConfirm" maxlength="20" minlength="6"
+               name="matKhauConfirm" ngModel
+               placeholder="Nhập lại mật khẩu" required type="password">
+        <ng-container *ngIf="matKhauConfirm.invalid && (matKhauConfirm.touched || matKhauConfirm.dirty)">
+          <small *ngIf="matKhauConfirm.errors.required" class="text-muted help-text">Mật khẩu không
+            được để trống</small>
+          <small *ngIf="matKhauConfirm.errors.minlength" class="text-muted help-text">Mật khẩu phải từ 4 ký tự</small>
+          <small *ngIf="matKhauConfirm.errors.maxlength" class="text-muted help-text">Mật khẩu phải bé hơn 20 ký
+            tự</small>
+        </ng-container>
       </div>
       <div class="form-group">
-        <input class="form-control" id="hoTen" name="hoTen" ngModel placeholder="Họ tên" type="text">
-        <small class="text-muted help-text">Help text</small>
+        <input #hoTen="ngModel" class="form-control" id="hoTen" name="hoTen" ngModel placeholder="Họ tên"
+               type="text" required>
+        <ng-container *ngIf="hoTen.invalid && (hoTen.touched || hoTen.dirty)">
+          <small *ngIf="hoTen.errors.required" class="text-muted help-text">Họ tên
+            được để trống</small>
+        </ng-container>
       </div>
 
       <div class="form-group">
-        <input class="form-control" #email="ngModel" id="email" required name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" ngModel placeholder="Email" type="text">
+        <input #email="ngModel" class="form-control" id="email" name="email" ngModel
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email" required type="text">
 
         <ng-container *ngIf="email.invalid && (email.touched || email.dirty)">
           <small *ngIf="email.errors.required" class="text-muted help-text">Email không được để trống</small>
@@ -49,16 +61,17 @@
       </div>
 
       <div class="form-group">
-        <input class="form-control" #soDT="ngModel" id="soDT" name="soDT" ngModel placeholder="Số điện thoại" type="number">
+        <input #soDT="ngModel" class="form-control" id="soDT" name="soDT" ngModel placeholder="Số điện thoại"
+               type="number" required>
         <ng-container *ngIf="soDT.invalid && (soDT.touched || soDT.dirty)">
           <small *ngIf="soDT.errors.required" class="text-muted help-text">Số điện thoại không được để trống</small>
         </ng-container>
       </div>
 
       <div class="form-group">
-        <button class="btn btn-orange mr-2" type="submit" [disabled]="signupForm.invalid">Đăng ký</button>
+        <button [disabled]="signupForm.invalid" class="btn btn-orange mr-2" type="submit">Đăng ký</button>
       </div>
-<!--      <input name="maNhom" ngModel type="hidden" value="GP01">-->
+      <!--      <input name="maNhom" ngModel type="hidden" value="GP01">-->
       <input name="maLoaiNguoiDung" type="hidden">
     </form>
   </div>

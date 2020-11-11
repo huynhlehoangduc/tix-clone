@@ -33,4 +33,5 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  log(v) {console.log(v);}
 }

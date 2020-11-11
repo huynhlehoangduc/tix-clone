@@ -16,6 +16,9 @@
           {{ heThongRap.tenHeThongRap }}
         </mat-option>
       </mat-select>
+      <mat-error>
+        Hệ thống rạp <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-50 p-2">
@@ -26,6 +29,9 @@
              matInput
              placeholder="Date Time">
       <owl-date-time #dt1></owl-date-time>
+      <mat-error>
+        Ngày giờ khởi chiếu <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-50 p-2">
@@ -37,6 +43,9 @@
           {{ cumRap.tenCumRap }}
         </mat-option>
       </mat-select>
+      <mat-error>
+        Cụm rạp <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-50 p-2">
@@ -45,6 +54,9 @@
              matInput
              type="number"
              value="">
+      <mat-error>
+        Giá vé <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-50 p-2">
@@ -55,6 +67,9 @@
           {{ rap.tenRap }}
         </mat-option>
       </mat-select>
+      <mat-error>
+        Rạp <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
 
     <button color="primary"

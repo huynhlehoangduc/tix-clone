@@ -8,18 +8,27 @@
       <input
         formControlName="tenPhim"
         matInput>
+      <mat-error>
+        Tên phim <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-50 p-2">
       <mat-label>Bí danh</mat-label>
       <input
         formControlName="biDanh"
         matInput>
+      <mat-error>
+        Bí danh <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="w-50 p-2">
       <mat-label>Trailer</mat-label>
       <input
         formControlName="trailer"
         matInput>
+      <mat-error>
+        Trailer <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill"
@@ -31,6 +40,9 @@
       <mat-datepicker-toggle [for]="picker"
                              matSuffix></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+      <mat-error>
+        Ngày khởi chiếu <strong>không được để trống</strong>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="w-100 p-2">
